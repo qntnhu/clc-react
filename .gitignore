@@ -1,0 +1,40 @@
+lib-cov
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+*.iml
+*.php
+*.bat
+*.ini
+*.zip
+*.7z
+*.rar
+
+test
+tests
+pids
+logs
+results
+npm-debug.log
+node_modules/
+Thumbs.db
+.DS_Store
+.nodemonignore
+.sass-cache/
+
+# Editor
+.idea
+
+# bower
+/.bower-cache/
+/.bower-registry/
+
+# build
+.build
+# dist/css
+# dist/js
+build/
