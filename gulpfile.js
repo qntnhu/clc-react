@@ -24,8 +24,7 @@ gulp.task("images", function() {
     .pipe(gulp.dest("build/images/"));
 });
 
-gulp.task("dev", function() {
-  gulp.run("build");
+gulp.task("dev", ["build"], function() {
   gulp.watch("assets/js/**/*.js", ["scripts"]);
   gulp.watch("assets/css/**/*.css", ["styles"]);
   gulp.watch("assets/images/**/*", ["images"]);
