@@ -31,13 +31,16 @@ var clc = {
 
     },
     subSort: 1,
-    subSortKey: "A"
+    subSortKey: "A",
+    value: "A-value"
   },
   B: {
 
+    value: "B-value"
   },
   C: {
 
+    value: "C-value"
   }
 };
 
