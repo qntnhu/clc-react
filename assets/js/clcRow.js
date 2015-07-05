@@ -3,7 +3,7 @@ var ClcRow;
 
 ClcRow = React.createClass({
   handleRowClick: function() {
-    this.props.handleRowClick(this.props.label);
+    
   },
   render: function() {
     return <li onClick="this.handleRowClick">

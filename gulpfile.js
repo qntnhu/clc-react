@@ -4,7 +4,7 @@ var concat = require("gulp-concat");
 var imagemin = require("gulp-imagemin");
 
 gulp.task("styles", function() {
-  gulp.src(["assets/css/styles.css"])
+  gulp.src(["assets/css/*.css"])
     .pipe(concat("styles.css"))
     .pipe(gulp.dest("./build/"));
 });

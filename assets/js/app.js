@@ -2,9 +2,9 @@ var React = require("react");
 var clc = require("./clc");
 var ClcList = require("./clcList");
 var Manipulate = require("./manipulate");
-var App;
+var app = app || {};
 
-App = React.createClass({
+app.App = React.createClass({
     getInitialState: function() {
       return {
         level: 0,
@@ -13,14 +13,14 @@ App = React.createClass({
     },
     render: function () {
       return <div>
-          <ClcList clc={this.props.clc}/>
+          <ClcList level={this.state.level} sortKey={this.state.sortKey} clc={this.props.clc}/>
           <Manipulate />
       </div>;
     }
 });
 
-App.start = function () {
-  React.render(<App clc={clc} />, document.getElementById("app"));
+app.start = function () {
+  React.render(<app.App clc={clc} />, document.getElementById("app"));
 };
 
-module.exports = window.App = App;
+module.exports = window.app = app;

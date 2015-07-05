@@ -3,44 +3,48 @@ var clc = {
     A1: {
       A11: {
 				A111: {
-					subSort: 0,
-          subSortKey: "A111"
+          sortVal: "A111-value"
         },
         A112: {
-					subSort: 0,
-					subSortKey: "A111"
+          sortVal: "A112-value"
         },
-				subSort: 1,
-				subSortKey: "All",
-        value: "A11-value"
+        sortVal: "A11-value"
       },
       A12: {
-
+        A121: {
+          sortVal: "A121-value"
+        },
+        A122: {
+          sortVal: "A122-value"
+        },
+        sortVal: "A12-value"
       },
       A13: {
-
+        A131: {
+          sortVal: "A131-value"
+        },
+        A132: {
+          sortVal: "A132-value"
+        },
+        sortVal: "A13-value"
       },
-      subSort: 1,
-      subSortKey: "A1",
-      value: "马克思、恩格斯著作"
+      sortVal: "A1-value"
     },
     A2: {
-
+      sortVal: "A2"
     },
     A3: {
-
+      sortVal: "A3"
     },
-    subSort: 1,
-    subSortKey: "A",
-    value: "A-value"
+    sortVal: "A-value"
   },
   B: {
 
-    value: "B-value"
+    sortVal: "B-value"
   },
   C: {
 
-    value: "C-value"
+    sortVal: "C-value"
   }
 };
 
