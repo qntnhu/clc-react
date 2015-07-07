@@ -11,9 +11,18 @@ app.App = React.createClass({
         sortKey: ""
       };
     },
+    handleItemClick: function(label) {
+      var level = this.state.level;
+
+      // 0    1 - A    2 - A1    3 - A11
+      this.setState({
+        level: level + 1,
+        sortKey: label
+      });
+    },
     render: function () {
       return <div>
-          <ClcList level={this.state.level} sortKey={this.state.sortKey} clc={this.props.clc}/>
+          <ClcList handleItemClick={this.handleItemClick} level={this.state.level} sortKey={this.state.sortKey} clc={this.props.clc}/>
           <Manipulate />
       </div>;
     }

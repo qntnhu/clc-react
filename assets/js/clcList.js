@@ -4,11 +4,6 @@ var utils = require("./utils");
 var ClcList;
 
 ClcList = React.createClass({
-  getInitialState: function() {
-    return {
-      init: 0
-    };
-  },
   componentDidMount: function() {
 
   },
@@ -16,6 +11,8 @@ ClcList = React.createClass({
     var rows = [];
     var clc = this.props.clc;
     var sortArr = [];
+    var handleItemClick = this.props.handleItemClick;
+    var level = this.props.level;
     function sort(obj, level, currentLevel, sortKey) {
       currentLevel = currentLevel || 0;
       var propArr = Object.keys(obj);
@@ -23,7 +20,7 @@ ClcList = React.createClass({
         if (utils.isObject(val)) {
           if (level === 0) {
             sortArr.push([prop, val.sortVal]);
-          } else if (level === currentLevel && prop === sortKey) {
+          } else if ((level === 1 || (level - 1) === currentLevel) && prop === sortKey) {
             utils.eachProp(val, function(val, prop) {
               if (utils.isObject(val)) {
                 sortArr.push([prop, val.sortVal]);
@@ -38,7 +35,7 @@ ClcList = React.createClass({
     }
     sort(clc, this.props.level, 0, this.props.sortKey);
     sortArr.forEach(function(subArr, i) {
-      rows.push(<ClcRow label={subArr[0]} sortVal={subArr[1]} />);
+      rows.push(<ClcRow handleItemClick={handleItemClick} level={level} label={subArr[0]} sortVal={subArr[1]} />);
     });
 
     return (<div>
