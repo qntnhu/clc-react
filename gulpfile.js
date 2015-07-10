@@ -5,7 +5,7 @@ var imagemin = require("gulp-imagemin");
 
 gulp.task("styles", function() {
   gulp.src(["assets/css/*.css"])
-    .pipe(concat("styles.css"))
+    .pipe(concat("main.css"))
     .pipe(gulp.dest("./build/"));
 });
 

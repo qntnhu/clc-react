@@ -15,7 +15,6 @@ ClcList = React.createClass({
     var level = this.props.level;
     function sort(obj, level, currentLevel, sortKey) {
       currentLevel = currentLevel || 0;
-      var propArr = Object.keys(obj);
       utils.eachProp(obj, function(val, prop) {
         if (utils.isObject(val)) {
           if (level === 0) {
@@ -27,8 +26,8 @@ ClcList = React.createClass({
               }
             });
             return true;
-          } else if (level > currentLevel) {
-            sort(val, level, currentLevel += 1, sortKey);
+          } else if (level !== 1 && level > currentLevel) {
+            sort(val, level, currentLevel + 1, sortKey);
           }
         }
       });

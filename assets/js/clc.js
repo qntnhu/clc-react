@@ -2,41 +2,56 @@ var clc = {
   A: {
     A1: {
       A11: {
-				A111: {
-          sortVal: "A111-value"
-        },
-        A112: {
-          sortVal: "A112-value"
-        },
-        sortVal: "A11-value"
+        sortVal: "选集、文集"
       },
       A12: {
-        A121: {
-          sortVal: "A121-value"
-        },
-        A122: {
-          sortVal: "A122-value"
-        },
-        sortVal: "A12-value"
+        sortVal: "单行著作"
       },
       A13: {
-        A131: {
-          sortVal: "A131-value"
-        },
-        A132: {
-          sortVal: "A132-value"
-        },
-        sortVal: "A13-value"
+        sortVal: "书信集、日记、函电、谈话"
       },
-      sortVal: "A1-value"
+      A14: {
+        sortVal: "诗词"
+      },
+			A15: {
+        sortVal: "手迹"
+      },
+	    A16: {
+        sortVal: "专题汇编"
+      },
+			A18: {
+        sortVal: "语录"
+      },
+      sortVal: "马克思、恩格斯著作"
     },
     A2: {
-      sortVal: "A2-value"
+      A21: {
+        sortVal: "选集、文集"
+      },
+      A22: {
+        sortVal: "单行著作"
+      },
+      A23: {
+        sortVal: "书信集、日记、函电、谈话"
+      },
+      A24: {
+        sortVal: "诗词"
+      },
+			A25: {
+        sortVal: "手迹"
+      },
+	    A26: {
+        sortVal: "专题汇编"
+      },
+			A28: {
+        sortVal: "语录"
+      },
+      sortVal: "列宁著作"
     },
     A3: {
-      sortVal: "A3-value"
+      sortVal: "斯大林著作"
     },
-    sortVal: "A-value"
+    sortVal: "马列毛邓"
   },
   B: {
     B1: {

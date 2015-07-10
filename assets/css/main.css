@@ -1,1 +1,2 @@
-.mainpulate a { display: block; width: 40px; height: 40px; font-size: 30px; }
+.manipulate { display: none; }
+.manipulate a { display: block; width: 40px; height: 40px; font-size: 30px; }
