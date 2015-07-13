@@ -1,6 +1,6 @@
 var React = require("react");
-var ClcRow = require("./clcRow");
 var utils = require("./utils");
+var ClcRow = require("./clcRow");
 var ClcList;
 
 ClcList = React.createClass({
@@ -30,17 +30,20 @@ ClcList = React.createClass({
   render: function() {
     var clc = this.props.clc;
     var level = this.props.level;
+    var sortKey = this.props.sortKey;
     var handleItemClick = this.props.handleItemClick;
     var rows = [];
-    this.sort(clc, this.props.level, 0, this.props.sortKey).forEach(function(subArr, i) {
-      rows.push(<ClcRow handleItemClick={handleItemClick} level={level} label={subArr[0]} sortVal={subArr[1]} />);
-    });
+    this.sort(clc, level, 0, sortKey).forEach(function(subArr, i) {
+      rows.push(<ClcRow clc={clc} sort={this.sort} sortKey={sortKey} handleItemClick={handleItemClick} level={level} label={subArr[0]} sortVal={subArr[1]} />);
+    }.bind(this));
 
-    return (<div>
-      <ul>
-        {rows}
-      </ul>
-    </div>);
+    return (
+      <div>
+        <ul>
+          {rows}
+        </ul>
+      </div>
+    );
   }
 });
 

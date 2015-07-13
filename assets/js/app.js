@@ -13,7 +13,7 @@ app.App = React.createClass({
     },
     handleItemClick: function(label) {
       var level = this.state.level;
-      
+
       // 0    1 - A    2 - A1    3 - A11
       this.setState({
         level: level + 1,

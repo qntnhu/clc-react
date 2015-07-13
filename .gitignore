@@ -13,6 +13,7 @@ lib-cov
 *.zip
 *.7z
 *.rar
+*.swp
 
 test
 tests
