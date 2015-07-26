@@ -8,23 +8,25 @@ app.App = React.createClass({
     getInitialState: function() {
       return {
         level: 0,
-        sortKey: ""
+        sortCode: ""
       };
     },
-    handleItemClick: function(label) {
+    handleItemClick: function(sortCode) {
       var level = this.state.level;
 
       // 0    1 - A    2 - A1    3 - A11
       this.setState({
         level: level + 1,
-        sortKey: label
+        sortCode: sortCode
       });
     },
     render: function () {
-      return <div>
-          <ClcList handleItemClick={this.handleItemClick} level={this.state.level} sortKey={this.state.sortKey} clc={this.props.clc}/>
-          <Manipulate />
-      </div>;
+      return (
+        <div className="clc-wrapper">
+            <ClcList handleItemClick={this.handleItemClick} level={this.state.level} sortCode={this.state.sortCode} clc={this.props.clc}/>
+            <Manipulate />
+        </div>
+      );
     }
 });
 
