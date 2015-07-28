@@ -7,9 +7,8 @@ ClcRow = React.createClass({
     var sortArr = this.props.sort(this.props.clc, this.props.level + 1, 0, sortCode);
     if (sortArr.length === 0 ) {
       return;
-    } else {
-      this.props.handleItemClick(sortCode);
     }
+    this.props.handleItemClick(sortCode);
   },
   render: function() {
     return (
