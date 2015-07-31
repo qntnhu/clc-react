@@ -1,25 +1,18 @@
 var React = require("react");
-// var Router = require("react-router");
 var clc = require("./clc");
 var ClcList = require("./clcList");
 var Manipulate = require("./manipulate");
 var app = app || {};
-// var Route = Router.Route;
 
 app.App = React.createClass({
     getInitialState: function() {
-      var route = window.location.hash.substr(1);
-      var routePartials = route.replace(/^\//, "").split("/");
-      var level = +routePartials[0] || 0;
-      var sortCode = routePartials[1] || "";
       return {
-        level: level,
-        sortCode: sortCode
+        level: 0,
+        sortCode: ""
       };
     },
     handleItemClick: function(sortCode) {
       var level = this.state.level;
-      window.location.hash = "#/" + (level + 1) + "/" + sortCode;
 
       // 0    1 - A    2 - A1    3 - A11
       this.setState({
@@ -40,16 +33,5 @@ app.App = React.createClass({
 app.start = function () {
   React.render(<app.App clc={clc} />, document.getElementById("app"));
 };
-
-/*
-var routes = (
-  <Route path=":id/sortCode" routeHandler={app.App}>
-  </Route>
-);
-
-Router.run(routes, Router.HashLocation, function(Root) {
-  React.render(<Root />, document.getElementById("app"));
-});
-*/
 
 module.exports = window.app = app;
