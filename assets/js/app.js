@@ -5,7 +5,7 @@ var Manipulate = require("./manipulate");
 var app = app || {};
 
 app.App = React.createClass({
-    getInitialState: function() {
+    getRouterObj: function() {
       var route = window.location.hash.substr(1);
       var routePartials = route.replace(/^\//, "").split("/");
       var level = +routePartials[0] || 0;
@@ -14,6 +14,15 @@ app.App = React.createClass({
         level: level,
         sortCode: sortCode
       };
+    },
+    getInitialState: function() {
+      var routerObj = this.getRouterObj();
+      return routerObj;
+    },
+    componentDidMount: function() {
+      window.addEventListener("hashchange", function() {
+        this.setState(this.getRouterObj());
+      }.bind(this));
     },
     handleItemClick: function(sortCode) {
       var level = this.state.level;

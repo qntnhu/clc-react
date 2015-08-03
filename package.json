@@ -11,7 +11,6 @@
     "gulp-browserify": "~0.5.0",
     "gulp-concat": "~2.4.1",
     "gulp-imagemin": "~1.2.1",
-    "jquery": "~2.1.1",
     "react": "^0.13.0",
     "react-tools": "^0.13.0",
     "reactify": "^1.1.1"
