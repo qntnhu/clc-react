@@ -2778,6 +2778,7 @@ var regLevelDot2 = /^[A-Z](?:\.|\-)[0-9]+$/;
 var regLevelDot3 = /^[A-Z][0-9](?:\.|\-)[0-9]+$/;
 var regLevelDot4 = /^[A-Z][0-9]{2}(?:\.|\-)[0-9]+$/;
 var regLevelDot5 = /^[A-Z][0-9]{3}(?:\.|\-)[0-9]+$/;
+var reg = /^([A-Z]{1,2})([0-9]*)(?:\.|\-)?([0-9]*)$/;
 var hasProp = function(obj, prop) {
   return Object.prototype.hasOwnProperty.call(obj, prop);
 };
@@ -2790,10 +2791,29 @@ arr.forEach(function(el, i) {
   var pair = el.split(/\s+/);
   var sortCode = pair[0];
   var sortVal = pair[1];
-  var alpha = sortCode.substring(0, 1);
-  var alphaNum1 = sortCode.substring(0, 2);
-  var alphaNum2 = sortCode.substring(0, 3);
+  var alpha = sortCode.substring(0, 1);  //m1    // var reg = /^([A-Z]{1,2})([0-9]*)(?:\.|\-)?([0-9]*)$/;
+  var alphaNum1 = sortCode.substring(0, 2);  //m1 + m2
+  var alphaNum2 = sortCode.substring(0, 3);  //
+  var match = sortCode.match(reg);
+  alpha = match[1];
+  alphaNum1 = match[2];
+  alphaNum2 = match[3];
+  var alphaMatch1 = function() {
+    
+  };
+  var alphaMatch2 = function() {
 
+  };
+
+  var m1,m2,m3,m4,m5;
+  if (match !== null) {
+    if (alpha.length === 1) {
+      alphaMatch1();
+    } else if (alpha.length === 2) {
+      alphaMatch2();
+    }
+  }
+  return false;
   if (sortCode.match(regLevel1) !== null) {
     clc[sortCode] = {
       "sortVal": sortVal
