@@ -2581,7 +2581,7 @@
     var dot = match[3];
     alphaNum2 = match[4];
     var alpha1 = alpha[0];
-    var alpha2 = alpha[1];
+    var alpha2 = alpha.substring(0, 2);
     var alphaMatch1 = function() {
 
     };
@@ -2600,7 +2600,30 @@
           setSortVal(clc[alpha1][alpha][alpha + dot + alphaNum2[0]], alpha + dot + alphaNum2, sortVal);
         }
       } else if (alphaNum1.length === 1) {
-        if (1) {
+        if (alphaNum2.length === 0) {
+          setSortVal(clc[alpha1][alpha], alpha + alphaNum1, sortVal);
+        } else if (alphaNum2.length >= 1) {
+          setSortVal(clc[alpha1][alpha], alpha + dot + alphaNum1, sortVal);
+        }
+      } else if (alphaNum1.length === 2) {
+        if (alphaNum2.length === 0) {
+          if (hasProp(clc[alpha1][alpha], alpha + alphaNum1[0])) {
+            setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0]], alpha + alphaNum1, sortVal);
+          } else {
+            setSortVal(clc[alpha1][alpha], alpha + alphaNum1, sortVal);
+          }
+        } else if (alphaNum2.length >= 1) {
+          setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0]], alpha + dot + alphaNum1, sortVal);
+        }
+      } else if (alphaNum1.length === 3) {
+        if (alphaNum2.length === 0) {
+          // TODO: TN927 卫星通信和宇宙通信
+          if (hasProp(clc[alpha1][alpha2], alpha + alphaNum1[0]) &&
+            hasProp(clc[alpha1][alpha2][alpha + alphaNum1[0]], alpha + alphaNum1[0] + alphaNum1[1])) {
+            setSortVal(clc[alpha1][alpha2][alpha + alphaNum1[0]][alpha + alphaNum1[0] + alphaNum1[1]],
+              alpha + alphaNum1, sortVal);
+          }
+        } else if (alphaNum2.length === 1) {
 
         }
       }
