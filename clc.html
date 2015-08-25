@@ -2018,7 +2018,7 @@
   TG8 公差与技术测量及机械量仪
   TG9 钳工工艺与装配工艺
   TH 机械仪表工业
-  TH11机械学
+  TH11 机械学
   TH12 机械设计、计算与制图
   TH13 机械零件及传动装置
   TH14 机械制造用材料
@@ -2542,21 +2542,19 @@
     "Y": {},
     "Z": {}
   };
-  var regLevel1 = /^[A-Z]$/;
-  var regLevel2 = /^[A-Z][0-9]$/;
-  var regLevel3 = /^[A-Z][0-9]{2}$/;
-  var regLevel4 = /^[A-Z][0-9]{3}$/;
-  var regLevel5 = /^[A-Z][0-9]{4}$/;
-  var regLevelDot2 = /^[A-Z](?:\.|\-)[0-9]+$/;
-  var regLevelDot3 = /^[A-Z][0-9](?:\.|\-)[0-9]+$/;
-  var regLevelDot4 = /^[A-Z][0-9]{2}(?:\.|\-)[0-9]+$/;
-  var regLevelDot5 = /^[A-Z][0-9]{3}(?:\.|\-)[0-9]+$/;
   var reg = /^([A-Z]{1,2})([0-9]*)(\.|\-)?([0-9]*)$/;
   var hasProp = function(obj, prop) {
-    return Object.prototype.hasOwnProperty.call(obj, prop);
+    try {
+      return Object.prototype.hasOwnProperty.call(obj, prop);
+    } catch (e) {
+      return false;
+    }
   };
   var log = console.log.bind(console);
   var setSortVal = function(obj, prop, sortVal) {
+    if (prop.indexOf("TMddd92") !== -1) {
+      log(obj, prop, sortVal);
+    }
     obj[prop] = obj[prop] || {};
     obj[prop].sortVal = sortVal;
   };
@@ -2581,7 +2579,6 @@
     var dot = match[3];
     alphaNum2 = match[4];
     var alpha1 = alpha[0];
-    var alpha2 = alpha.substring(0, 2);
     var alphaMatch1 = function() {
 
     };
@@ -2617,53 +2614,67 @@
         }
       } else if (alphaNum1.length === 3) {
         if (alphaNum2.length === 0) {
-          // TODO: TN927 卫星通信和宇宙通信
-          if (hasProp(clc[alpha1][alpha2], alpha + alphaNum1[0]) &&
-            hasProp(clc[alpha1][alpha2][alpha + alphaNum1[0]], alpha + alphaNum1[0] + alphaNum1[1])) {
-            setSortVal(clc[alpha1][alpha2][alpha + alphaNum1[0]][alpha + alphaNum1[0] + alphaNum1[1]],
+          if (hasProp(clc[alpha1][alpha], alpha + alphaNum1[0] + alphaNum1[1])) {
+            setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0] + alphaNum1[1]],
+              alpha + alphaNum1, sortVal);
+          } else if (hasProp(clc[alpha1][alpha], alpha + alphaNum1[0]) &&
+            hasProp(clc[alpha1][alpha][alpha + alphaNum1[0]], alpha + alphaNum1[0] + alphaNum1[1])) {
+            setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0]][alpha + alphaNum1[0] + alphaNum1[1]],
               alpha + alphaNum1, sortVal);
           }
-        } else if (alphaNum2.length === 1) {
-
+        } else if (alphaNum2.length >= 1) {
+          if (alphaNum1 === "882") {
+            //debugger;
+          }
+          if (hasProp(clc[alpha1][alpha], alpha + alphaNum1[0] + alphaNum1[1]) &&
+            hasProp(clc[alpha1][alpha][alpha + alphaNum1[0] + alphaNum1[1]], alpha + alphaNum1)) {
+            setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0] + alphaNum1[1]][alpha + alphaNum1],
+              alpha + alphaNum1 + dot + alphaNum2, sortVal);
+          } else if (hasProp(clc[alpha1][alpha], alpha + alphaNum1[0]) &&
+            hasProp(clc[alpha1][alpha][alpha + alphaNum1[0]], alpha + alphaNum1[0] + alphaNum1[1]) &&
+            hasProp(clc[alpha1][alpha][alpha + alphaNum1[0]][alpha + alphaNum1[0] + alphaNum1[1]], alpha + alphaNum1)) {
+            setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0]][alpha + alphaNum1[0] + alphaNum1[1]][alpha + alphaNum1],
+              alpha + alphaNum1 + dot + alphaNum2, sortVal);
+          }
         }
       }
     };
+
+    // TB91-64 => TB-91
+
+    // no TN9
+    // TN92
+    // TN929.5 移动通信
+
+    // no TH84
+    //  TH841 波谱仪 not output
+    //  TH842 能谱仪 .
+    //  TH843 质谱仪 .
+    /*
+    TN70 一般性问题
+    TN710 电子电路
+    TN711 网络
+    TN713 滤波器
+    TN715 均衡器
+    */
+    /* no TS25
+    TS251 屠宰及肉类加工工业
+    TS252 乳品加工工业
+    TS253 蛋品加工工业
+    TS254 水产加工工业
+    TS255 水果、蔬菜、坚果加工工业
+    */
+
+    /*
+    TS6 木材加工工业、家具制造工业
+    TS664-64 家具图谱
+    */
 
     if (match !== null) {
       if (alpha.length === 1) {
         alphaMatch1();
       } else if (alpha.length === 2) {
         alphaMatch2();
-      }
-    }
-    return false;
-
-
-
-
-    if (sortCode.match(regLevel1) !== null) {
-      clc[sortCode] = {
-        "sortVal": sortVal
-      };
-    } else if (sortCode.match(regLevel2) !== null || sortCode.match(regLevelDot2) !== null) {
-      if (hasProp(clc, alpha)) {
-        clc[alpha][sortCode] = {
-          "sortVal": sortVal
-        };
-      }
-    } else if (sortCode.match(regLevel3) !== null || sortCode.match(regLevelDot3) !== null) {
-      if (hasProp(clc, alpha) && hasProp(clc[alpha], alphaNum1)) {
-        clc[alpha][alphaNum1][sortCode] = {
-          "sortVal": sortVal
-        };
-      }
-    } else if (sortCode.match(regLevel4) !== null || sortCode.match(regLevelDot4) !== null) {
-      if (hasProp(clc, alpha) &&
-          hasProp(clc[alpha], alphaNum1) &&
-          hasProp(clc[alpha][alphaNum1], alphaNum2)) {
-        clc[alpha][alphaNum1][alphaNum2][sortCode] = {
-          "sortVal": sortVal
-        };
       }
     }
   });
