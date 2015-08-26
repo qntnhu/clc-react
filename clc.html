@@ -2552,9 +2552,6 @@
   };
   var log = console.log.bind(console);
   var setSortVal = function(obj, prop, sortVal) {
-    if (prop.indexOf("TMddd92") !== -1) {
-      log(obj, prop, sortVal);
-    }
     obj[prop] = obj[prop] || {};
     obj[prop].sortVal = sortVal;
   };
@@ -2566,21 +2563,27 @@
     var pair = el.split(/\s+/);
     var sortCode = pair[0];
     var sortVal = pair[1];
-    var alpha = sortCode.substring(0, 1);
-    var alphaNum1 = sortCode.substring(0, 2);
-    var alphaNum2 = sortCode.substring(0, 3);
     var match = sortCode.match(reg);
 
     if (match === null) {
       return;
     }
-    alpha = match[1];
-    alphaNum1 = match[2];
-    var dot = match[3];
-    alphaNum2 = match[4];
-    var alpha1 = alpha[0];
-    var alphaMatch1 = function() {
 
+    var alpha = match[1];
+    var alphaNum1 = match[2];
+    var dot = match[3] || "";
+    var alphaNum2 = match[4];
+    var alpha1 = alpha[0];
+
+    var alphaMatch1 = function() {
+      if (alphaNum1 === "" && dot === "") {
+        setSortVal(clc, alpha, sortVal);
+        return;
+      }
+      if (alphaNum1.length === 1 && dot === "" && !hasProp(clc[alpha], alpha + alphaNum1[0])) {
+        setSortVal(clc[alpha], alpha + alphaNum1[0], sortVal);
+        return;
+      }
     };
     var alphaMatch2 = function() {
       if (!hasProp(clc, alpha1)) {
@@ -2610,9 +2613,21 @@
             setSortVal(clc[alpha1][alpha], alpha + alphaNum1, sortVal);
           }
         } else if (alphaNum2.length >= 1) {
-          setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0]], alpha + dot + alphaNum1, sortVal);
+          setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0]], alpha + alphaNum1 + dot + alphaNum2, sortVal);
         }
       } else if (alphaNum1.length === 3) {
+        // particular case
+        // ["TN929.5", "移动通信"]
+        if (alphaNum1 === "929" && alphaNum2 === "5") {
+          setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0] + alphaNum1[1]],
+            alpha + alphaNum1 + dot + alphaNum2, sortVal);
+          return;
+        } else if (alphaNum1 === "664" && alphaNum2 === "64") {
+          // ["TS664-64", "家具图谱"]
+          setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0]], alpha + alphaNum1 + dot + alphaNum2, sortVal);
+          return;
+        }
+
         if (alphaNum2.length === 0) {
           if (hasProp(clc[alpha1][alpha], alpha + alphaNum1[0] + alphaNum1[1])) {
             setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0] + alphaNum1[1]],
@@ -2621,11 +2636,14 @@
             hasProp(clc[alpha1][alpha][alpha + alphaNum1[0]], alpha + alphaNum1[0] + alphaNum1[1])) {
             setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0]][alpha + alphaNum1[0] + alphaNum1[1]],
               alpha + alphaNum1, sortVal);
+          } else if (hasProp(clc[alpha1][alpha], alpha + alphaNum1[0]) &&
+            !hasProp(clc[alpha1][alpha][alpha + alphaNum1[0]], alpha + alphaNum1[0] + alphaNum1[1])) {
+            setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0]], alpha + alphaNum1, sortVal);
+          } else if (!hasProp(clc[alpha1][alpha], alpha + alphaNum1[0]) &&
+            !hasProp(clc[alpha1][alpha][alpha + alphaNum1[0]], alpha + alphaNum1[0] + alphaNum1[1])) {
+            setSortVal(clc[alpha1][alpha], alpha + alphaNum1, sortVal);
           }
         } else if (alphaNum2.length >= 1) {
-          if (alphaNum1 === "882") {
-            //debugger;
-          }
           if (hasProp(clc[alpha1][alpha], alpha + alphaNum1[0] + alphaNum1[1]) &&
             hasProp(clc[alpha1][alpha][alpha + alphaNum1[0] + alphaNum1[1]], alpha + alphaNum1)) {
             setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0] + alphaNum1[1]][alpha + alphaNum1],
@@ -2639,36 +2657,6 @@
         }
       }
     };
-
-    // TB91-64 => TB-91
-
-    // no TN9
-    // TN92
-    // TN929.5 移动通信
-
-    // no TH84
-    //  TH841 波谱仪 not output
-    //  TH842 能谱仪 .
-    //  TH843 质谱仪 .
-    /*
-    TN70 一般性问题
-    TN710 电子电路
-    TN711 网络
-    TN713 滤波器
-    TN715 均衡器
-    */
-    /* no TS25
-    TS251 屠宰及肉类加工工业
-    TS252 乳品加工工业
-    TS253 蛋品加工工业
-    TS254 水产加工工业
-    TS255 水果、蔬菜、坚果加工工业
-    */
-
-    /*
-    TS6 木材加工工业、家具制造工业
-    TS664-64 家具图谱
-    */
 
     if (match !== null) {
       if (alpha.length === 1) {
