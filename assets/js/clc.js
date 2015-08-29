@@ -2769,20 +2769,19 @@ var clc = {
   "Y": {},
   "Z": {}
 };
-var regLevel1 = /^[A-Z]$/;
-var regLevel2 = /^[A-Z][0-9]$/;
-var regLevel3 = /^[A-Z][0-9]{2}$/;
-var regLevel4 = /^[A-Z][0-9]{3}$/;
-var regLevel5 = /^[A-Z][0-9]{4}$/;
-var regLevelDot2 = /^[A-Z](?:\.|\-)[0-9]+$/;
-var regLevelDot3 = /^[A-Z][0-9](?:\.|\-)[0-9]+$/;
-var regLevelDot4 = /^[A-Z][0-9]{2}(?:\.|\-)[0-9]+$/;
-var regLevelDot5 = /^[A-Z][0-9]{3}(?:\.|\-)[0-9]+$/;
-var reg = /^([A-Z]{1,2})([0-9]*)(?:\.|\-)?([0-9]*)$/;
-var hasProp = function(obj, prop) {
-  return Object.prototype.hasOwnProperty.call(obj, prop);
-};
+var reg = /^([A-Z]{1,2})([0-9]*)(\.|\-)?([0-9]*)$/;
 var log = console.log.bind(console);
+var hasProp = function(obj, prop) {
+  try {
+    return Object.prototype.hasOwnProperty.call(obj, prop);
+  } catch (e) {
+    return false;
+  }
+};
+var setSortVal = function(obj, prop, sortVal) {
+  obj[prop] = obj[prop] || {};
+  obj[prop].sortVal = sortVal;
+};
 
 arr.forEach(function(el, i) {
   el = el.trim();
@@ -2791,52 +2790,151 @@ arr.forEach(function(el, i) {
   var pair = el.split(/\s+/);
   var sortCode = pair[0];
   var sortVal = pair[1];
-  var alpha = sortCode.substring(0, 1);  //m1    // var reg = /^([A-Z]{1,2})([0-9]*)(?:\.|\-)?([0-9]*)$/;
-  var alphaNum1 = sortCode.substring(0, 2);  //m1 + m2
-  var alphaNum2 = sortCode.substring(0, 3);  //
   var match = sortCode.match(reg);
-  alpha = match[1];
-  alphaNum1 = match[2];
-  alphaNum2 = match[3];
+
+  if (match === null) {
+    return;
+  }
+
+  var alpha = match[1];
+  var alphaNum1 = match[2];
+  var dot = match[3] || "";
+  var alphaNum2 = match[4];
+  var alpha1 = alpha[0];
+
   var alphaMatch1 = function() {
-    
+    if (alphaNum1 === "" && alphaNum2 === "") {
+      setSortVal(clc, alpha, sortVal);
+      return;
+    }
+    if (alphaNum1.length === 1 && dot === "" && !hasProp(clc[alpha], alpha + alphaNum1[0]) ||
+      alphaNum1 === "" && dot !== "" && alphaNum2.length === 1) {
+      setSortVal(clc[alpha], alpha + (alphaNum1[0] || "") + dot + alphaNum2, sortVal);
+      return;
+    }
+    if (alphaNum1 === "" && dot !== "" && alphaNum2.length >= 2) {
+      if (hasProp(clc[alpha], alpha + dot + alphaNum2[0])) {
+        setSortVal(clc[alpha][alpha + dot + alphaNum2[0]], alpha + dot + alphaNum2, sortVal);
+      } else {
+        setSortVal(clc[alpha], alpha + dot + alphaNum2, sortVal);
+      }
+      return;
+    }
+
+    if (alphaNum1.length === 1) {
+      if (alphaNum2.length === 0) {
+        setSortVal(clc[alpha], alpha + alphaNum1, sortVal);
+      } else if (alphaNum2.length === 1) {
+        setSortVal(clc[alpha][alpha + alphaNum1], alpha + alphaNum1 + dot + alphaNum2, sortVal);
+      } else if (alphaNum2.length >= 2) {
+        if (hasProp(clc[alpha][alpha + alphaNum1], alpha + alphaNum1 + dot + alphaNum2[0])) {
+          setSortVal(clc[alpha][alpha + alphaNum1][alpha + alphaNum1 + dot + alphaNum2[0]],
+            alpha + alphaNum1 + dot + alphaNum2, sortVal);
+        } else {
+          setSortVal(clc[alpha][alpha + alphaNum1], alpha + alphaNum1 + dot + alphaNum2, sortVal);
+        }
+      }
+    } else if (alphaNum1.length === 2) {
+      if (alphaNum2 === "") {
+        if (hasProp(clc[alpha], alpha + alphaNum1[0])) {
+          setSortVal(clc[alpha][alpha + alphaNum1[0]], alpha + alphaNum1, sortVal);
+        } else {
+          setSortVal(clc[alpha], alpha + alphaNum1, sortVal);
+        }
+      } else if (alphaNum2.length >= 1) {
+        if (!hasProp(clc[alpha][alpha + alphaNum1[0]], alpha + alphaNum1)) {
+          return;
+        }
+        if (hasProp(clc[alpha][alpha + alphaNum1[0]][alpha + alphaNum1], alpha + alphaNum1 + dot + alphaNum2[0])) {
+          setSortVal(clc[alpha][alpha + alphaNum1[0]][alpha + alphaNum1][alpha + alphaNum1 + dot + alphaNum2[0]],
+            alpha + alphaNum1 + dot + alphaNum2, sortVal);
+        } else {
+          setSortVal(clc[alpha][alpha + alphaNum1[0]][alpha + alphaNum1],
+            alpha + alphaNum1 + dot + alphaNum2, sortVal);
+        }
+      }
+    } else if (alphaNum1.length === 3) {
+
+    }
   };
   var alphaMatch2 = function() {
+    if (!hasProp(clc, alpha1)) {
+      return;
+    }
+    if (!hasProp(clc[alpha1], alpha)) {
+      setSortVal(clc[alpha1], alpha, sortVal);
+      return;
+    }
+    if (alphaNum1 === "") {
+      if (alphaNum2.length === 1) {
+        setSortVal(clc[alpha1][alpha], alpha + dot + alphaNum2, sortVal);
+      } else if (alphaNum2.length >= 2) {
+        setSortVal(clc[alpha1][alpha][alpha + dot + alphaNum2[0]], alpha + dot + alphaNum2, sortVal);
+      }
+    } else if (alphaNum1.length === 1) {
+      if (alphaNum2 === "") {
+        setSortVal(clc[alpha1][alpha], alpha + alphaNum1, sortVal);
+      } else if (alphaNum2.length >= 1) {
+        setSortVal(clc[alpha1][alpha], alpha + alphaNum1 + dot + alphaNum2, sortVal);
+      }
+    } else if (alphaNum1.length === 2) {
+      if (alphaNum2 === "") {
+        if (hasProp(clc[alpha1][alpha], alpha + alphaNum1[0])) {
+          setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0]], alpha + alphaNum1, sortVal);
+        } else {
+          setSortVal(clc[alpha1][alpha], alpha + alphaNum1, sortVal);
+        }
+      } else if (alphaNum2.length >= 1) {
+        setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0]][alpha + alphaNum1], alpha + alphaNum1 + dot + alphaNum2, sortVal);
+      }
+    } else if (alphaNum1.length === 3) {
+      // particular case
+      // ["TN929.5", "移动通信"]
+      if (alphaNum1 === "929" && alphaNum2 === "5") {
+        setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0] + alphaNum1[1]],
+          alpha + alphaNum1 + dot + alphaNum2, sortVal);
+        return;
+      } else if (alphaNum1 === "664" && alphaNum2 === "64") {
+        // ["TS664-64", "家具图谱"]
+        setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0]], alpha + alphaNum1 + dot + alphaNum2, sortVal);
+        return;
+      }
 
+      if (alphaNum2 === "") {
+        if (hasProp(clc[alpha1][alpha], alpha + alphaNum1[0] + alphaNum1[1])) {
+          setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0] + alphaNum1[1]],
+            alpha + alphaNum1, sortVal);
+        } else if (hasProp(clc[alpha1][alpha], alpha + alphaNum1[0]) &&
+          hasProp(clc[alpha1][alpha][alpha + alphaNum1[0]], alpha + alphaNum1[0] + alphaNum1[1])) {
+          setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0]][alpha + alphaNum1[0] + alphaNum1[1]],
+            alpha + alphaNum1, sortVal);
+        } else if (hasProp(clc[alpha1][alpha], alpha + alphaNum1[0]) &&
+          !hasProp(clc[alpha1][alpha][alpha + alphaNum1[0]], alpha + alphaNum1[0] + alphaNum1[1])) {
+          setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0]], alpha + alphaNum1, sortVal);
+        } else if (!hasProp(clc[alpha1][alpha], alpha + alphaNum1[0]) &&
+          !hasProp(clc[alpha1][alpha][alpha + alphaNum1[0]], alpha + alphaNum1[0] + alphaNum1[1])) {
+          setSortVal(clc[alpha1][alpha], alpha + alphaNum1, sortVal);
+        }
+      } else if (alphaNum2.length >= 1) {
+        if (hasProp(clc[alpha1][alpha], alpha + alphaNum1[0] + alphaNum1[1]) &&
+          hasProp(clc[alpha1][alpha][alpha + alphaNum1[0] + alphaNum1[1]], alpha + alphaNum1)) {
+          setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0] + alphaNum1[1]][alpha + alphaNum1],
+            alpha + alphaNum1 + dot + alphaNum2, sortVal);
+        } else if (hasProp(clc[alpha1][alpha], alpha + alphaNum1[0]) &&
+          hasProp(clc[alpha1][alpha][alpha + alphaNum1[0]], alpha + alphaNum1[0] + alphaNum1[1]) &&
+          hasProp(clc[alpha1][alpha][alpha + alphaNum1[0]][alpha + alphaNum1[0] + alphaNum1[1]], alpha + alphaNum1)) {
+          setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0]][alpha + alphaNum1[0] + alphaNum1[1]][alpha + alphaNum1],
+            alpha + alphaNum1 + dot + alphaNum2, sortVal);
+        }
+      }
+    }
   };
 
-  var m1,m2,m3,m4,m5;
   if (match !== null) {
     if (alpha.length === 1) {
       alphaMatch1();
     } else if (alpha.length === 2) {
       alphaMatch2();
-    }
-  }
-  return false;
-  if (sortCode.match(regLevel1) !== null) {
-    clc[sortCode] = {
-      "sortVal": sortVal
-    };
-  } else if (sortCode.match(regLevel2) !== null || sortCode.match(regLevelDot2) !== null) {
-    if (hasProp(clc, alpha)) {
-      clc[alpha][sortCode] = {
-        "sortVal": sortVal
-      };
-    }
-  } else if (sortCode.match(regLevel3) !== null || sortCode.match(regLevelDot3) !== null) {
-    if (hasProp(clc, alpha) && hasProp(clc[alpha], alphaNum1)) {
-      clc[alpha][alphaNum1][sortCode] = {
-        "sortVal": sortVal
-      };
-    }
-  } else if (sortCode.match(regLevel4) !== null || sortCode.match(regLevelDot4) !== null) {
-    if (hasProp(clc, alpha) &&
-        hasProp(clc[alpha], alphaNum1) &&
-        hasProp(clc[alpha][alphaNum1], alphaNum2)) {
-      clc[alpha][alphaNum1][alphaNum2][sortCode] = {
-        "sortVal": sortVal
-      };
     }
   }
 });

@@ -178,8 +178,8 @@
   C913.4 文教卫生
   C913.5 青少年问题
   C913.6 老年人问题
-  C913.68妇女问题
-  C913.69残疾人问题
+  C913.68 妇女问题
+  C913.69 残疾人问题
   C913.7 社会福利、救济、社会保障
   C913.8 社会病态
   C913.9 其他社会问题
@@ -299,8 +299,8 @@
   D669.9 其他
   D67 地方政治概况
   D675.8 台湾政治概况
-  D676.58香港政治概况
-  D676.59澳门政治概况
+  D676.58 香港政治概况
+  D676.59 澳门政治概况
   D69 政治制度史
   D691 清及清以前政治
   D693 民国时代政治
@@ -398,7 +398,7 @@
   E27 各种武装力量(各军、兵种)
   E28 民兵
   E289 地方军事
-  E289.58台湾军事
+  E289.58 台湾军事
   E29 军事史(战史、建军史)
   E297 中国人民解放军军事史
   E297.1 北伐战争时期
@@ -461,7 +461,7 @@
   F121 社会经济结构与体制
   F123 国民经济计划和管理
   F123.1 计划管理
-  F123.13计划调节
+  F123.13 计划调节
   F123.2 远景规划
   F123.3 国民经济发展综合计划
   F123.7 国有资产管理与评估
@@ -694,7 +694,7 @@
   G259 世界各国图书馆事业
   G26 博物馆学、博物馆事业
   G27 档案学、档案事业
-  G3科学、科学研究
+  G3 科学、科学研究
   G302 知识学
   G303 未来学
   G305 科学发明、发现研究(创造学)
@@ -831,7 +831,7 @@
   G638 各类型中等学校
   G639 世界各国中等教育概况
   G64 高等教育
-  G642.479高等教育自学考试
+  G642.479 高等教育自学考试
   G648 各类型高等学校
   G649 世界各国高等教育概况
   G65 师范教育
@@ -933,8 +933,8 @@
   H31 英语
   H310.1 非标准英语
   H310.4 英语水平考试
-  H310.41世界
-  H310.42中国
+  H310.41 世界
+  H310.42 中国
   H311 语音
   H312 文字
   H313 语义、词汇、词义
@@ -2543,6 +2543,7 @@
     "Z": {}
   };
   var reg = /^([A-Z]{1,2})([0-9]*)(\.|\-)?([0-9]*)$/;
+  var log = console.log.bind(console);
   var hasProp = function(obj, prop) {
     try {
       return Object.prototype.hasOwnProperty.call(obj, prop);
@@ -2550,7 +2551,6 @@
       return false;
     }
   };
-  var log = console.log.bind(console);
   var setSortVal = function(obj, prop, sortVal) {
     obj[prop] = obj[prop] || {};
     obj[prop].sortVal = sortVal;
@@ -2627,7 +2627,55 @@
           }
         }
       } else if (alphaNum1.length === 3) {
-
+        if (alphaNum2 === "") {
+          if (hasProp(clc[alpha], alpha + alphaNum1[0] + alphaNum1[1])) {
+            setSortVal(clc[alpha][alpha + alphaNum1[0] + alphaNum1[1]],
+              alpha + alphaNum1, sortVal);
+          } else if (hasProp(clc[alpha], alpha + alphaNum1[0]) &&
+            hasProp(clc[alpha][alpha + alphaNum1[0]], alpha + alphaNum1[0] + alphaNum1[1])) {
+            setSortVal(clc[alpha][alpha + alphaNum1[0]][alpha + alphaNum1[0] + alphaNum1[1]],
+              alpha + alphaNum1, sortVal);
+          } else if (hasProp(clc[alpha], alpha + alphaNum1[0]) &&
+            !hasProp(clc[alpha][alpha + alphaNum1[0]], alpha + alphaNum1[0] + alphaNum1[1])) {
+            setSortVal(clc[alpha][alpha + alphaNum1[0]], alpha + alphaNum1, sortVal);
+          } else if (!hasProp(clc[alpha], alpha + alphaNum1[0]) &&
+            !hasProp(clc[alpha][alpha + alphaNum1[0]], alpha + alphaNum1[0] + alphaNum1[1])) {
+            setSortVal(clc[alpha], alpha + alphaNum1, sortVal);
+          }
+        } else if (alphaNum2.length === 1) {
+          if (hasProp(clc[alpha], alpha + alphaNum1[0] + alphaNum1[1])) {
+            if (hasProp(clc[alpha][alpha + alphaNum1[0] + alphaNum1[1]], alpha + alphaNum1)) {
+              setSortVal(clc[alpha][alpha + alphaNum1[0] + alphaNum1[1]][alpha + alphaNum1],
+                alpha + alphaNum1 + dot + alphaNum2, sortVal);
+            } else {
+              setSortVal(clc[alpha][alpha + alphaNum1[0] + alphaNum1[1]], alpha + alphaNum1 + dot + alphaNum2, sortVal);
+            }
+          } else if (hasProp(clc[alpha][alpha + alphaNum1[0]], alpha + alphaNum1[0] + alphaNum1[1]) &&
+            !hasProp(clc[alpha][alpha + alphaNum1[0]][alpha + alphaNum1[0] + alphaNum1[1]], alpha + alphaNum1)) {
+            setSortVal(clc[alpha][alpha + alphaNum1[0]][alpha + alphaNum1[0] + alphaNum1[1]],
+              alpha + alphaNum1 + dot + alphaNum2, sortVal);
+          } else if (hasProp(clc[alpha], alpha + alphaNum1[0]) &&
+            hasProp(clc[alpha][alpha + alphaNum1[0]], alpha + alphaNum1[0] + alphaNum1[1]) &&
+            hasProp(clc[alpha][alpha + alphaNum1[0]][alpha + alphaNum1[0] + alphaNum1[1]], alpha + alphaNum1)) {
+            setSortVal(clc[alpha][alpha + alphaNum1[0]][alpha + alphaNum1[0] + alphaNum1[1]][alpha + alphaNum1],
+              alpha + alphaNum1 + dot + alphaNum2, sortVal);
+          }
+        } else if (alphaNum2.length >= 2) {
+          if (hasProp(clc[alpha], alpha + alphaNum1[0] + alphaNum1[1]) &&
+            hasProp(clc[alpha][alpha + alphaNum1[0] + alphaNum1[1]], alpha + alphaNum1) &&
+            hasProp(clc[alpha][alpha + alphaNum1[0] + alphaNum1[1]][alpha + alphaNum1],
+              alpha + alphaNum1 + dot + alphaNum2[0])) {
+            setSortVal(clc[alpha][alpha + alphaNum1[0] + alphaNum1[1]][alpha + alphaNum1][alpha + alphaNum1 + dot + alphaNum2[0]],
+              alpha + alphaNum1 + dot + alphaNum2, sortVal);
+          } else if (hasProp(clc[alpha], alpha + alphaNum1[0]) &&
+            hasProp(clc[alpha][alpha + alphaNum1[0]], alpha + alphaNum1[0] + alphaNum1[1]) &&
+            hasProp(clc[alpha][alpha + alphaNum1[0]][alpha + alphaNum1[0] + alphaNum1[1]], alpha + alphaNum1) &&
+            hasProp(clc[alpha][alpha + alphaNum1[0]][alpha + alphaNum1[0] + alphaNum1[1]][alpha + alphaNum1],
+              alpha + alphaNum1 + dot + alphaNum2)) {
+            setSortVal(clc[alpha][alpha + alphaNum1[0]][alpha + alphaNum1[0] + alphaNum1[1]][alpha + alphaNum1][alpha + alphaNum1 + dot + alphaNum2[0]],
+              alpha + alphaNum1 + dot + alphaNum2, sortVal);
+          }
+        }
       }
     };
     var alphaMatch2 = function() {
