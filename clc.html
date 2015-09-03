@@ -2576,109 +2576,97 @@
     var alpha1 = alpha[0];
 
     var alphaMatch1 = function() {
+      var _cA = clc[alpha];
+      var _aN1 = alpha + alphaNum1[0];
+      var _aN2 = alpha + alphaNum1[0] + alphaNum1[1];
+      var _aN = alpha + alphaNum1;
+      var _aNDot = _aN + dot + alphaNum2;
       if (alphaNum1 === "" && alphaNum2 === "") {
         setSortVal(clc, alpha, sortVal);
         return;
       }
-      if (alphaNum1.length === 1 && dot === "" && !hasProp(clc[alpha], alpha + alphaNum1[0]) ||
+      if (alphaNum1.length === 1 && dot === "" && !hasProp(_cA, _aN1) ||
         alphaNum1 === "" && dot !== "" && alphaNum2.length === 1) {
-        setSortVal(clc[alpha], alpha + (alphaNum1[0] || "") + dot + alphaNum2, sortVal);
+        setSortVal(_cA, alpha + (alphaNum1[0] || "") + dot + alphaNum2, sortVal);
         return;
       }
       if (alphaNum1 === "" && dot !== "" && alphaNum2.length >= 2) {
-        if (hasProp(clc[alpha], alpha + dot + alphaNum2[0])) {
-          setSortVal(clc[alpha][alpha + dot + alphaNum2[0]], alpha + dot + alphaNum2, sortVal);
+        if (hasProp(_cA, alpha + dot + alphaNum2[0])) {
+          setSortVal(_cA[alpha + dot + alphaNum2[0]], _aNDot, sortVal);
         } else {
-          setSortVal(clc[alpha], alpha + dot + alphaNum2, sortVal);
+          setSortVal(_cA, _aNDot, sortVal);
         }
         return;
       }
 
       if (alphaNum1.length === 1) {
         if (alphaNum2.length === 0) {
-          setSortVal(clc[alpha], alpha + alphaNum1, sortVal);
+          setSortVal(_cA, _aN, sortVal);
         } else if (alphaNum2.length === 1) {
-          setSortVal(clc[alpha][alpha + alphaNum1], alpha + alphaNum1 + dot + alphaNum2, sortVal);
+          setSortVal(_cA[_aN], _aNDot, sortVal);
         } else if (alphaNum2.length >= 2) {
-          if (hasProp(clc[alpha][alpha + alphaNum1], alpha + alphaNum1 + dot + alphaNum2[0])) {
-            setSortVal(clc[alpha][alpha + alphaNum1][alpha + alphaNum1 + dot + alphaNum2[0]],
-              alpha + alphaNum1 + dot + alphaNum2, sortVal);
+          if (hasProp(_cA[_aN], _aNDot[0])) {
+            setSortVal(_cA[_aN][_aNDot[0]], _aNDot, sortVal);
           } else {
-            setSortVal(clc[alpha][alpha + alphaNum1], alpha + alphaNum1 + dot + alphaNum2, sortVal);
+            setSortVal(_cA[_aN], _aNDot, sortVal);
           }
         }
       } else if (alphaNum1.length === 2) {
         if (alphaNum2 === "") {
-          if (hasProp(clc[alpha], alpha + alphaNum1[0])) {
-            setSortVal(clc[alpha][alpha + alphaNum1[0]], alpha + alphaNum1, sortVal);
+          if (hasProp(_cA, _aN1)) {
+            setSortVal(_cA[_aN1], _aN, sortVal);
           } else {
-            setSortVal(clc[alpha], alpha + alphaNum1, sortVal);
+            setSortVal(_cA, _aN, sortVal);
           }
         } else if (alphaNum2.length >= 1) {
-          if (!hasProp(clc[alpha][alpha + alphaNum1[0]], alpha + alphaNum1)) {
+          if (!hasProp(_cA[_aN1], _aN)) {
             return;
           }
-          if (hasProp(clc[alpha][alpha + alphaNum1[0]][alpha + alphaNum1], alpha + alphaNum1 + dot + alphaNum2[0])) {
-            setSortVal(clc[alpha][alpha + alphaNum1[0]][alpha + alphaNum1][alpha + alphaNum1 + dot + alphaNum2[0]],
-              alpha + alphaNum1 + dot + alphaNum2, sortVal);
+          if (hasProp(_cA[_aN1][_aN], _aNDot[0])) {
+            setSortVal(_cA[_aN1][_aN][_aNDot[0]], _aNDot, sortVal);
           } else {
-            setSortVal(clc[alpha][alpha + alphaNum1[0]][alpha + alphaNum1],
-              alpha + alphaNum1 + dot + alphaNum2, sortVal);
+            setSortVal(_cA[_aN1][_aN], _aNDot, sortVal);
           }
         }
       } else if (alphaNum1.length === 3) {
         if (alphaNum2 === "") {
-          if (hasProp(clc[alpha], alpha + alphaNum1[0] + alphaNum1[1])) {
-            setSortVal(clc[alpha][alpha + alphaNum1[0] + alphaNum1[1]],
-              alpha + alphaNum1, sortVal);
-          } else if (hasProp(clc[alpha], alpha + alphaNum1[0]) &&
-            hasProp(clc[alpha][alpha + alphaNum1[0]], alpha + alphaNum1[0] + alphaNum1[1])) {
-            setSortVal(clc[alpha][alpha + alphaNum1[0]][alpha + alphaNum1[0] + alphaNum1[1]],
-              alpha + alphaNum1, sortVal);
-          } else if (hasProp(clc[alpha], alpha + alphaNum1[0]) &&
-            !hasProp(clc[alpha][alpha + alphaNum1[0]], alpha + alphaNum1[0] + alphaNum1[1])) {
-            setSortVal(clc[alpha][alpha + alphaNum1[0]], alpha + alphaNum1, sortVal);
-          } else if (!hasProp(clc[alpha], alpha + alphaNum1[0]) &&
-            !hasProp(clc[alpha][alpha + alphaNum1[0]], alpha + alphaNum1[0] + alphaNum1[1])) {
-            setSortVal(clc[alpha], alpha + alphaNum1, sortVal);
+          if (hasProp(_cA, _aN2)) {
+            setSortVal(_cA[_aN2], _aN, sortVal);
+          } else if (hasProp(_cA, _aN1) && hasProp(_cA[_aN1], _aN2)) {
+            setSortVal(_cA[_aN1][_aN2], _aN, sortVal);
+          } else if (hasProp(_cA, _aN1) && !hasProp(_cA[_aN1], _aN2)) {
+            setSortVal(_cA[_aN1], _aN, sortVal);
+          } else if (!hasProp(_cA, _aN1) && !hasProp(_cA[_aN1], _aN2)) {
+            setSortVal(_cA, _aN, sortVal);
           }
         } else if (alphaNum2.length === 1) {
-          if (hasProp(clc[alpha], alpha + alphaNum1[0] + alphaNum1[1])) {
-            if (hasProp(clc[alpha][alpha + alphaNum1[0] + alphaNum1[1]], alpha + alphaNum1)) {
-              setSortVal(clc[alpha][alpha + alphaNum1[0] + alphaNum1[1]][alpha + alphaNum1],
-                alpha + alphaNum1 + dot + alphaNum2, sortVal);
+          if (hasProp(_cA, _aN2)) {
+            if (hasProp(_cA[_aN2], _aN)) {
+              setSortVal(_cA[_aN2][_aN], _aNDot, sortVal);
             } else {
-              setSortVal(clc[alpha][alpha + alphaNum1[0] + alphaNum1[1]], alpha + alphaNum1 + dot + alphaNum2, sortVal);
+              setSortVal(_cA[_aN2], _aNDot, sortVal);
             }
-          } else if (hasProp(clc[alpha][alpha + alphaNum1[0]], alpha + alphaNum1[0] + alphaNum1[1]) &&
-            !hasProp(clc[alpha][alpha + alphaNum1[0]][alpha + alphaNum1[0] + alphaNum1[1]], alpha + alphaNum1)) {
-            setSortVal(clc[alpha][alpha + alphaNum1[0]][alpha + alphaNum1[0] + alphaNum1[1]],
-              alpha + alphaNum1 + dot + alphaNum2, sortVal);
-          } else if (hasProp(clc[alpha], alpha + alphaNum1[0]) &&
-            hasProp(clc[alpha][alpha + alphaNum1[0]], alpha + alphaNum1[0] + alphaNum1[1]) &&
-            hasProp(clc[alpha][alpha + alphaNum1[0]][alpha + alphaNum1[0] + alphaNum1[1]], alpha + alphaNum1)) {
-            setSortVal(clc[alpha][alpha + alphaNum1[0]][alpha + alphaNum1[0] + alphaNum1[1]][alpha + alphaNum1],
-              alpha + alphaNum1 + dot + alphaNum2, sortVal);
+          } else if (hasProp(_cA[_aN1], _aN2) && !hasProp(_cA[_aN1][_aN2], _aN)) {
+            setSortVal(_cA[_aN1][_aN2], _aNDot, sortVal);
+          } else if (hasProp(_cA, _aN1) && hasProp(_cA[_aN1], _aN2) && hasProp(_cA[_aN1][_aN2], _aN)) {
+            setSortVal(_cA[_aN1][_aN2][_aN], _aNDot, sortVal);
           }
         } else if (alphaNum2.length >= 2) {
-          if (hasProp(clc[alpha], alpha + alphaNum1[0] + alphaNum1[1]) &&
-            hasProp(clc[alpha][alpha + alphaNum1[0] + alphaNum1[1]], alpha + alphaNum1) &&
-            hasProp(clc[alpha][alpha + alphaNum1[0] + alphaNum1[1]][alpha + alphaNum1],
-              alpha + alphaNum1 + dot + alphaNum2[0])) {
-            setSortVal(clc[alpha][alpha + alphaNum1[0] + alphaNum1[1]][alpha + alphaNum1][alpha + alphaNum1 + dot + alphaNum2[0]],
-              alpha + alphaNum1 + dot + alphaNum2, sortVal);
-          } else if (hasProp(clc[alpha], alpha + alphaNum1[0]) &&
-            hasProp(clc[alpha][alpha + alphaNum1[0]], alpha + alphaNum1[0] + alphaNum1[1]) &&
-            hasProp(clc[alpha][alpha + alphaNum1[0]][alpha + alphaNum1[0] + alphaNum1[1]], alpha + alphaNum1) &&
-            hasProp(clc[alpha][alpha + alphaNum1[0]][alpha + alphaNum1[0] + alphaNum1[1]][alpha + alphaNum1],
-              alpha + alphaNum1 + dot + alphaNum2)) {
-            setSortVal(clc[alpha][alpha + alphaNum1[0]][alpha + alphaNum1[0] + alphaNum1[1]][alpha + alphaNum1][alpha + alphaNum1 + dot + alphaNum2[0]],
-              alpha + alphaNum1 + dot + alphaNum2, sortVal);
+          if (hasProp(_cA, _aN2) && hasProp(_cA[_aN2], _aN) && hasProp(_cA[_aN2][_aN], _aN + dot + alphaNum2[0])) {
+            setSortVal(_cA[_aN2][_aN][_aN + dot + alphaNum2[0]], _aN + dot + alphaNum2, sortVal);
+          } else if (hasProp(_cA, _aN1) && hasProp(_cA[_aN1], _aN2) && hasProp(_cA[_aN1][_aN2], _aN) &&
+            hasProp(_cA[_aN1][_aN2][_aN], _aNDot)) {
+            setSortVal(_cA[_aN1][_aN2][_aN][_aN + dot + alphaNum2[0]], _aNDot, sortVal);
           }
         }
       }
     };
     var alphaMatch2 = function() {
+      var _cA = clc[alpha1][alpha];
+      var _aN1 = alpha + alphaNum1[0];
+      var _aN2 = alpha + alphaNum1[0] + alphaNum1[1];
+      var _aN = alpha + alphaNum1;
+      var _aNDot = _aN + dot + alphaNum2;
       if (!hasProp(clc, alpha1)) {
         return;
       }
@@ -2688,64 +2676,53 @@
       }
       if (alphaNum1 === "") {
         if (alphaNum2.length === 1) {
-          setSortVal(clc[alpha1][alpha], alpha + dot + alphaNum2, sortVal);
+          setSortVal(_cA, alpha + dot + alphaNum2, sortVal);
         } else if (alphaNum2.length >= 2) {
-          setSortVal(clc[alpha1][alpha][alpha + dot + alphaNum2[0]], alpha + dot + alphaNum2, sortVal);
+          setSortVal(_cA[alpha + dot + alphaNum2[0]], alpha + dot + alphaNum2, sortVal);
         }
       } else if (alphaNum1.length === 1) {
         if (alphaNum2 === "") {
-          setSortVal(clc[alpha1][alpha], alpha + alphaNum1, sortVal);
+          setSortVal(_cA, _aN, sortVal);
         } else if (alphaNum2.length >= 1) {
-          setSortVal(clc[alpha1][alpha], alpha + alphaNum1 + dot + alphaNum2, sortVal);
+          setSortVal(_cA, _aNDot, sortVal);
         }
       } else if (alphaNum1.length === 2) {
         if (alphaNum2 === "") {
-          if (hasProp(clc[alpha1][alpha], alpha + alphaNum1[0])) {
-            setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0]], alpha + alphaNum1, sortVal);
+          if (hasProp(_cA, _aN1)) {
+            setSortVal(_cA[_aN1], _aN, sortVal);
           } else {
-            setSortVal(clc[alpha1][alpha], alpha + alphaNum1, sortVal);
+            setSortVal(_cA, _aN, sortVal);
           }
         } else if (alphaNum2.length >= 1) {
-          setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0]][alpha + alphaNum1], alpha + alphaNum1 + dot + alphaNum2, sortVal);
+          setSortVal(_cA[_aN1][_aN], _aNDot, sortVal);
         }
       } else if (alphaNum1.length === 3) {
         // particular case
         // ["TN929.5", "移动通信"]
         if (alphaNum1 === "929" && alphaNum2 === "5") {
-          setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0] + alphaNum1[1]],
-            alpha + alphaNum1 + dot + alphaNum2, sortVal);
+          setSortVal(_cA[_aN2], _aNDot, sortVal);
           return;
         } else if (alphaNum1 === "664" && alphaNum2 === "64") {
           // ["TS664-64", "家具图谱"]
-          setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0]], alpha + alphaNum1 + dot + alphaNum2, sortVal);
+          setSortVal(_cA[_aN1], _aNDot, sortVal);
           return;
         }
 
         if (alphaNum2 === "") {
-          if (hasProp(clc[alpha1][alpha], alpha + alphaNum1[0] + alphaNum1[1])) {
-            setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0] + alphaNum1[1]],
-              alpha + alphaNum1, sortVal);
-          } else if (hasProp(clc[alpha1][alpha], alpha + alphaNum1[0]) &&
-            hasProp(clc[alpha1][alpha][alpha + alphaNum1[0]], alpha + alphaNum1[0] + alphaNum1[1])) {
-            setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0]][alpha + alphaNum1[0] + alphaNum1[1]],
-              alpha + alphaNum1, sortVal);
-          } else if (hasProp(clc[alpha1][alpha], alpha + alphaNum1[0]) &&
-            !hasProp(clc[alpha1][alpha][alpha + alphaNum1[0]], alpha + alphaNum1[0] + alphaNum1[1])) {
-            setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0]], alpha + alphaNum1, sortVal);
-          } else if (!hasProp(clc[alpha1][alpha], alpha + alphaNum1[0]) &&
-            !hasProp(clc[alpha1][alpha][alpha + alphaNum1[0]], alpha + alphaNum1[0] + alphaNum1[1])) {
-            setSortVal(clc[alpha1][alpha], alpha + alphaNum1, sortVal);
+          if (hasProp(_cA, _aN2)) {
+            setSortVal(_cA[_aN2], _aN, sortVal);
+          } else if (hasProp(_cA, _aN1) && hasProp(_cA[_aN1], _aN2)) {
+            setSortVal(_cA[_aN1][_aN2], _aN, sortVal);
+          } else if (hasProp(_cA, _aN1) && !hasProp(_cA[_aN1], _aN2)) {
+            setSortVal(_cA[_aN1], _aN, sortVal);
+          } else if (!hasProp(_cA, _aN1) && !hasProp(_cA[_aN1], _aN2)) {
+            setSortVal(_cA, _aN, sortVal);
           }
         } else if (alphaNum2.length >= 1) {
-          if (hasProp(clc[alpha1][alpha], alpha + alphaNum1[0] + alphaNum1[1]) &&
-            hasProp(clc[alpha1][alpha][alpha + alphaNum1[0] + alphaNum1[1]], alpha + alphaNum1)) {
-            setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0] + alphaNum1[1]][alpha + alphaNum1],
-              alpha + alphaNum1 + dot + alphaNum2, sortVal);
-          } else if (hasProp(clc[alpha1][alpha], alpha + alphaNum1[0]) &&
-            hasProp(clc[alpha1][alpha][alpha + alphaNum1[0]], alpha + alphaNum1[0] + alphaNum1[1]) &&
-            hasProp(clc[alpha1][alpha][alpha + alphaNum1[0]][alpha + alphaNum1[0] + alphaNum1[1]], alpha + alphaNum1)) {
-            setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0]][alpha + alphaNum1[0] + alphaNum1[1]][alpha + alphaNum1],
-              alpha + alphaNum1 + dot + alphaNum2, sortVal);
+          if (hasProp(_cA, _aN2) && hasProp(_cA[_aN2], _aN)) {
+            setSortVal(_cA[_aN2][_aN], _aNDot, sortVal);
+          } else if (hasProp(_cA, _aN1) && hasProp(_cA[_aN1], _aN2) && hasProp(_cA[_aN1][_aN2], _aN)) {
+            setSortVal(_cA[_aN1][_aN2][_aN], _aNDot, sortVal);
           }
         }
       }
