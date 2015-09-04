@@ -2513,6 +2513,9 @@
   </div>
 
 <script type="text/javascript">
+(function() {
+  "use strict";
+
   var arr = document.querySelector("#clc").innerHTML.split("\n");
   var clc = {
     "A": {},
@@ -2560,28 +2563,28 @@
     el = el.trim();
 
     // pair ["A25", "手迹"]
-    var pair = el.split(/\s+/);
-    var sortCode = pair[0];
-    var sortVal = pair[1];
-    var match = sortCode.match(reg);
+    let pair = el.split(/\s+/);
+    let sortCode = pair[0];
+    let sortVal = pair[1];
+    let match = sortCode.match(reg);
 
     if (match === null) {
       return;
     }
 
-    var alpha = match[1];
-    var alphaNum1 = match[2];
-    var dot = match[3] || "";
-    var alphaNum2 = match[4];
-    var alpha1 = alpha[0];
+    let alpha = match[1];
+    let alphaNum1 = match[2];
+    let dot = match[3] || "";
+    let alphaNum2 = match[4];
+    let alpha1 = alpha[0];
 
-    var cA = alpha.length === 2 ? clc[alpha1][alpha] : clc[alpha];
-    var aN1 = alpha + alphaNum1[0];
-    var aN2 = alpha + alphaNum1[0] + alphaNum1[1];
-    var aN = alpha + alphaNum1;
-    var aNDot = aN + dot + alphaNum2;
+    let cA = alpha.length === 2 ? clc[alpha1][alpha] : clc[alpha];
+    let aN1 = alpha + alphaNum1[0];
+    let aN2 = alpha + alphaNum1[0] + alphaNum1[1];
+    let aN = alpha + alphaNum1;
+    let aNDot = aN + dot + alphaNum2;
 
-    var alphaMatch1 = function() {
+    let alphaMatch1 = function() {
       if (alphaNum1 === "" && alphaNum2 === "") {
         setSortVal(clc, alpha, sortVal);
         return;
@@ -2673,7 +2676,8 @@
         }
       }
     };
-    var alphaMatch2 = function() {
+
+    let alphaMatch2 = function() {
       if (!hasProp(clc, alpha1)) {
         return;
       }
@@ -2747,6 +2751,7 @@
   var clcStr = JSON.stringify(clc);
   log(clcStr, "    " , clcStr.length);
   log(clc);
+})();
 </script>
 </body>
 
