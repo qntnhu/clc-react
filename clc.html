@@ -2575,97 +2575,98 @@
     var alphaNum2 = match[4];
     var alpha1 = alpha[0];
 
+    var cA = alpha.length === 2 ? clc[alpha1][alpha] : clc[alpha];
+    var aN1 = alpha + alphaNum1[0];
+    var aN2 = alpha + alphaNum1[0] + alphaNum1[1];
+    var aN = alpha + alphaNum1;
+    var aNDot = aN + dot + alphaNum2;
+
     var alphaMatch1 = function() {
-      var _cA = clc[alpha];
-      var _aN1 = alpha + alphaNum1[0];
-      var _aN2 = alpha + alphaNum1[0] + alphaNum1[1];
-      var _aN = alpha + alphaNum1;
-      var _aNDot = _aN + dot + alphaNum2;
       if (alphaNum1 === "" && alphaNum2 === "") {
         setSortVal(clc, alpha, sortVal);
         return;
       }
-      if (alphaNum1.length === 1 && dot === "" && !hasProp(_cA, _aN1) ||
+      if (alphaNum1.length === 1 && dot === "" && !hasProp(cA, aN1) ||
         alphaNum1 === "" && dot !== "" && alphaNum2.length === 1) {
-        setSortVal(_cA, alpha + (alphaNum1[0] || "") + dot + alphaNum2, sortVal);
+        setSortVal(cA, alpha + (alphaNum1[0] || "") + dot + alphaNum2, sortVal);
         return;
       }
       if (alphaNum1 === "" && dot !== "" && alphaNum2.length >= 2) {
-        if (hasProp(_cA, alpha + dot + alphaNum2[0])) {
-          setSortVal(_cA[alpha + dot + alphaNum2[0]], _aNDot, sortVal);
+        if (hasProp(cA, alpha + dot + alphaNum2[0])) {
+          setSortVal(cA[alpha + dot + alphaNum2[0]], aNDot, sortVal);
         } else {
-          setSortVal(_cA, _aNDot, sortVal);
+          setSortVal(cA, aNDot, sortVal);
         }
         return;
       }
 
       if (alphaNum1.length === 1) {
         if (alphaNum2.length === 0) {
-          setSortVal(_cA, _aN, sortVal);
+          setSortVal(cA, aN, sortVal);
         } else if (alphaNum2.length === 1) {
-          setSortVal(_cA[_aN], _aNDot, sortVal);
+          setSortVal(cA[aN], aNDot, sortVal);
         } else if (alphaNum2.length >= 2) {
-          if (hasProp(_cA[_aN], _aNDot[0])) {
-            setSortVal(_cA[_aN][_aNDot[0]], _aNDot, sortVal);
+          if (hasProp(cA[aN], aNDot[0])) {
+            setSortVal(cA[aN][aNDot[0]], aNDot, sortVal);
           } else {
-            setSortVal(_cA[_aN], _aNDot, sortVal);
+            setSortVal(cA[aN], aNDot, sortVal);
           }
         }
       } else if (alphaNum1.length === 2) {
         if (alphaNum2 === "") {
-          if (hasProp(_cA, _aN1)) {
-            setSortVal(_cA[_aN1], _aN, sortVal);
+          if (hasProp(cA, aN1)) {
+            setSortVal(cA[aN1], aN, sortVal);
           } else {
-            setSortVal(_cA, _aN, sortVal);
+            setSortVal(cA, aN, sortVal);
           }
         } else if (alphaNum2.length >= 1) {
-          if (!hasProp(_cA[_aN1], _aN)) {
+          if (!hasProp(cA[aN1], aN)) {
             return;
           }
-          if (hasProp(_cA[_aN1][_aN], _aNDot[0])) {
-            setSortVal(_cA[_aN1][_aN][_aNDot[0]], _aNDot, sortVal);
+          if (hasProp(cA[aN1][aN], aNDot[0])) {
+            setSortVal(cA[aN1][aN][aNDot[0]], aNDot, sortVal);
           } else {
-            setSortVal(_cA[_aN1][_aN], _aNDot, sortVal);
+            setSortVal(cA[aN1][aN], aNDot, sortVal);
           }
         }
       } else if (alphaNum1.length === 3) {
         if (alphaNum2 === "") {
-          if (hasProp(_cA, _aN2)) {
-            setSortVal(_cA[_aN2], _aN, sortVal);
-          } else if (hasProp(_cA, _aN1) && hasProp(_cA[_aN1], _aN2)) {
-            setSortVal(_cA[_aN1][_aN2], _aN, sortVal);
-          } else if (hasProp(_cA, _aN1) && !hasProp(_cA[_aN1], _aN2)) {
-            setSortVal(_cA[_aN1], _aN, sortVal);
-          } else if (!hasProp(_cA, _aN1) && !hasProp(_cA[_aN1], _aN2)) {
-            setSortVal(_cA, _aN, sortVal);
+          if (hasProp(cA, aN2)) {
+            setSortVal(cA[aN2], aN, sortVal);
+          } else if (hasProp(cA, aN1) && hasProp(cA[aN1], aN2)) {
+            setSortVal(cA[aN1][aN2], aN, sortVal);
+          } else if (hasProp(cA, aN1) && !hasProp(cA[aN1], aN2)) {
+            setSortVal(cA[aN1], aN, sortVal);
+          } else if (!hasProp(cA, aN1) && !hasProp(cA[aN1], aN2)) {
+            setSortVal(cA, aN, sortVal);
           }
         } else if (alphaNum2.length === 1) {
-          if (hasProp(_cA, _aN2)) {
-            if (hasProp(_cA[_aN2], _aN)) {
-              setSortVal(_cA[_aN2][_aN], _aNDot, sortVal);
+          if (hasProp(cA, aN2)) {
+            if (hasProp(cA[aN2], aN)) {
+              setSortVal(cA[aN2][aN], aNDot, sortVal);
             } else {
-              setSortVal(_cA[_aN2], _aNDot, sortVal);
+              setSortVal(cA[aN2], aNDot, sortVal);
             }
-          } else if (hasProp(_cA[_aN1], _aN2) && !hasProp(_cA[_aN1][_aN2], _aN)) {
-            setSortVal(_cA[_aN1][_aN2], _aNDot, sortVal);
-          } else if (hasProp(_cA, _aN1) && hasProp(_cA[_aN1], _aN2) && hasProp(_cA[_aN1][_aN2], _aN)) {
-            setSortVal(_cA[_aN1][_aN2][_aN], _aNDot, sortVal);
+          } else if (hasProp(cA[aN1], aN2) && !hasProp(cA[aN1][aN2], aN)) {
+            setSortVal(cA[aN1][aN2], aNDot, sortVal);
+          } else if (hasProp(cA, aN1) && hasProp(cA[aN1], aN2) && hasProp(cA[aN1][aN2], aN)) {
+            setSortVal(cA[aN1][aN2][aN], aNDot, sortVal);
           }
         } else if (alphaNum2.length >= 2) {
-          if (hasProp(_cA, _aN2) && hasProp(_cA[_aN2], _aN) && hasProp(_cA[_aN2][_aN], _aN + dot + alphaNum2[0])) {
-            setSortVal(_cA[_aN2][_aN][_aN + dot + alphaNum2[0]], _aN + dot + alphaNum2, sortVal);
-          } else if (hasProp(_cA, _aN1) && hasProp(_cA[_aN1], _aN2)) {
-            if (hasProp(_cA[_aN1][_aN2], _aN)) {
-              if (hasProp(_cA[_aN1][_aN2][_aN], _aN + dot + alphaNum2[0])) {
-                setSortVal(_cA[_aN1][_aN2][_aN][_aN + dot + alphaNum2[0]], _aNDot, sortVal);
+          if (hasProp(cA, aN2) && hasProp(cA[aN2], aN) && hasProp(cA[aN2][aN], aN + dot + alphaNum2[0])) {
+            setSortVal(cA[aN2][aN][aN + dot + alphaNum2[0]], aN + dot + alphaNum2, sortVal);
+          } else if (hasProp(cA, aN1) && hasProp(cA[aN1], aN2)) {
+            if (hasProp(cA[aN1][aN2], aN)) {
+              if (hasProp(cA[aN1][aN2][aN], aN + dot + alphaNum2[0])) {
+                setSortVal(cA[aN1][aN2][aN][aN + dot + alphaNum2[0]], aNDot, sortVal);
               } else {
-                setSortVal(_cA[_aN1][_aN2][_aN], _aNDot, sortVal);
+                setSortVal(cA[aN1][aN2][aN], aNDot, sortVal);
               }
-            } else if (!hasProp(_cA[_aN1][_aN2], _aN)) {
-              if (hasProp(_cA[_aN1][_aN2], _aN + dot + alphaNum2[0])) {
-                setSortVal(_cA[_aN1][_aN2][_aN + dot + alphaNum2[0]], _aNDot, sortVal);
+            } else if (!hasProp(cA[aN1][aN2], aN)) {
+              if (hasProp(cA[aN1][aN2], aN + dot + alphaNum2[0])) {
+                setSortVal(cA[aN1][aN2][aN + dot + alphaNum2[0]], aNDot, sortVal);
               } else {
-                setSortVal(_cA[_aN1][_aN2], _aNDot, sortVal);
+                setSortVal(cA[aN1][aN2], aNDot, sortVal);
               }
             }
           }
@@ -2673,11 +2674,6 @@
       }
     };
     var alphaMatch2 = function() {
-      var _cA = clc[alpha1][alpha];
-      var _aN1 = alpha + alphaNum1[0];
-      var _aN2 = alpha + alphaNum1[0] + alphaNum1[1];
-      var _aN = alpha + alphaNum1;
-      var _aNDot = _aN + dot + alphaNum2;
       if (!hasProp(clc, alpha1)) {
         return;
       }
@@ -2687,53 +2683,53 @@
       }
       if (alphaNum1 === "") {
         if (alphaNum2.length === 1) {
-          setSortVal(_cA, alpha + dot + alphaNum2, sortVal);
+          setSortVal(cA, alpha + dot + alphaNum2, sortVal);
         } else if (alphaNum2.length >= 2) {
-          setSortVal(_cA[alpha + dot + alphaNum2[0]], alpha + dot + alphaNum2, sortVal);
+          setSortVal(cA[alpha + dot + alphaNum2[0]], alpha + dot + alphaNum2, sortVal);
         }
       } else if (alphaNum1.length === 1) {
         if (alphaNum2 === "") {
-          setSortVal(_cA, _aN, sortVal);
+          setSortVal(cA, aN, sortVal);
         } else if (alphaNum2.length >= 1) {
-          setSortVal(_cA, _aNDot, sortVal);
+          setSortVal(cA, aNDot, sortVal);
         }
       } else if (alphaNum1.length === 2) {
         if (alphaNum2 === "") {
-          if (hasProp(_cA, _aN1)) {
-            setSortVal(_cA[_aN1], _aN, sortVal);
+          if (hasProp(cA, aN1)) {
+            setSortVal(cA[aN1], aN, sortVal);
           } else {
-            setSortVal(_cA, _aN, sortVal);
+            setSortVal(cA, aN, sortVal);
           }
         } else if (alphaNum2.length >= 1) {
-          setSortVal(_cA[_aN1][_aN], _aNDot, sortVal);
+          setSortVal(cA[aN1][aN], aNDot, sortVal);
         }
       } else if (alphaNum1.length === 3) {
         // particular case
         // ["TN929.5", "移动通信"]
         if (alphaNum1 === "929" && alphaNum2 === "5") {
-          setSortVal(_cA[_aN2], _aNDot, sortVal);
+          setSortVal(cA[aN2], aNDot, sortVal);
           return;
         } else if (alphaNum1 === "664" && alphaNum2 === "64") {
           // ["TS664-64", "家具图谱"]
-          setSortVal(_cA[_aN1], _aNDot, sortVal);
+          setSortVal(cA[aN1], aNDot, sortVal);
           return;
         }
 
         if (alphaNum2 === "") {
-          if (hasProp(_cA, _aN2)) {
-            setSortVal(_cA[_aN2], _aN, sortVal);
-          } else if (hasProp(_cA, _aN1) && hasProp(_cA[_aN1], _aN2)) {
-            setSortVal(_cA[_aN1][_aN2], _aN, sortVal);
-          } else if (hasProp(_cA, _aN1) && !hasProp(_cA[_aN1], _aN2)) {
-            setSortVal(_cA[_aN1], _aN, sortVal);
-          } else if (!hasProp(_cA, _aN1) && !hasProp(_cA[_aN1], _aN2)) {
-            setSortVal(_cA, _aN, sortVal);
+          if (hasProp(cA, aN2)) {
+            setSortVal(cA[aN2], aN, sortVal);
+          } else if (hasProp(cA, aN1) && hasProp(cA[aN1], aN2)) {
+            setSortVal(cA[aN1][aN2], aN, sortVal);
+          } else if (hasProp(cA, aN1) && !hasProp(cA[aN1], aN2)) {
+            setSortVal(cA[aN1], aN, sortVal);
+          } else if (!hasProp(cA, aN1) && !hasProp(cA[aN1], aN2)) {
+            setSortVal(cA, aN, sortVal);
           }
         } else if (alphaNum2.length >= 1) {
-          if (hasProp(_cA, _aN2) && hasProp(_cA[_aN2], _aN)) {
-            setSortVal(_cA[_aN2][_aN], _aNDot, sortVal);
-          } else if (hasProp(_cA, _aN1) && hasProp(_cA[_aN1], _aN2) && hasProp(_cA[_aN1][_aN2], _aN)) {
-            setSortVal(_cA[_aN1][_aN2][_aN], _aNDot, sortVal);
+          if (hasProp(cA, aN2) && hasProp(cA[aN2], aN)) {
+            setSortVal(cA[aN2][aN], aNDot, sortVal);
+          } else if (hasProp(cA, aN1) && hasProp(cA[aN1], aN2) && hasProp(cA[aN1][aN2], aN)) {
+            setSortVal(cA[aN1][aN2][aN], aNDot, sortVal);
           }
         }
       }
