@@ -37,8 +37,10 @@ app.App = React.createClass({
     render: function () {
       return (
         <div className="clc-wrapper">
-            <ClcList handleItemClick={this.handleItemClick} level={this.state.level} sortCode={this.state.sortCode} clc={this.props.clc}/>
-            <Manipulate />
+            <ClcList handleItemClick={this.handleItemClick} level={this.state.level} sortCode={this.state.sortCode} clc={this.props.clc} />
+            {/*
+             <Manipulate />
+            */}
         </div>
       );
     }
