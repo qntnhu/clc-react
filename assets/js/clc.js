@@ -1,247 +1,3 @@
-/*var clc = {
-  "A": {
-    "A1": {
-      "A11": {
-        "sortVal": "选集、文集"
-      },
-      "A12": {
-        "sortVal": "单行著作"
-      },
-      "A13": {
-        "sortVal": "书信集、日记、函电、谈话"
-      },
-      "A14": {
-        "sortVal": "诗词"
-      },
-			"A15": {
-        "sortVal": "手迹"
-      },
-	    "A16": {
-        "sortVal": "专题汇编"
-      },
-			"A18": {
-        "sortVal": "语录"
-      },
-      "sortVal": "马克思、恩格斯著作"
-    },
-    "A2": {
-      A21: {
-        "sortVal": "选集、文集"
-      },
-      A22: {
-        "sortVal": "单行著作"
-      },
-      A23: {
-        "sortVal": "书信集、日记、函电、谈话"
-      },
-      A24: {
-        "sortVal": "诗词"
-      },
-			A25: {
-        "sortVal": "手迹"
-      },
-	    A26: {
-        "sortVal": "专题汇编"
-      },
-			A28: {
-        "sortVal": "语录"
-      },
-      "sortVal": "列宁著作"
-    },
-    A3: {
-      A31: {
-        "sortVal": "选集、文集"
-      },
-      A32: {
-        "sortVal": "单行著作"
-      },
-      A33: {
-        "sortVal": "书信集、日记、函电、谈话"
-      },
-      A34: {
-        "sortVal": "诗词"
-      },
-			A35: {
-        "sortVal": "手迹"
-      },
-	    A36: {
-        "sortVal": "专题汇编"
-      },
-			A38: {
-        "sortVal": "语录"
-      },
-      "sortVal": "斯大林著作"
-    },
-		A4: {
-      A41: {
-        "sortVal": "选集、文集"
-      },
-      A42: {
-        "sortVal": "单行著作"
-      },
-      A43: {
-        "sortVal": "书信集、日记、函电、谈话"
-      },
-      A44: {
-        "sortVal": "诗词"
-      },
-			A45: {
-        "sortVal": "手迹"
-      },
-	    A46: {
-        "sortVal": "专题汇编"
-      },
-			A48: {
-        "sortVal": "语录"
-      },
-      A49: {
-        "sortVal": "邓小平著作"
-      },
-      A491: {
-        "sortVal": "选集、文集"
-      },
-      A492: {
-        "sortVal": "单行著作"
-      },
-      A493: {
-        "sortVal": "书信集、日记、函电、谈话"
-      },
-      A494: {
-        "sortVal": "诗词"
-      },
-			A495: {
-        "sortVal": "手迹"
-      },
-	    A496: {
-        "sortVal": "专题汇编"
-      },
-			A498: {
-        "sortVal": "语录"
-      },
-      "sortVal": "毛泽东著作"
-    },
-    A5: {
-			"sortVal": "马克思、恩格斯、列宁、斯大林、毛泽东、邓小平著作汇编"
-    },
-    A7: {
-      "A71": {
-        "sortVal": "马克思"
-      },
-			"A72": {
-        "sortVal": "恩格斯"
-      },
-			"A73": {
-        "sortVal": "列宁"
-      },
-			"A74": {
-        "sortVal": "斯大林"
-      },
-      "A75": {
-        "sortVal": "毛泽东"
-      },
-      "A76": {
-        "sortVal": "邓小平"
-      },
-      "sortVal": "马克思、恩格斯、列宁、斯大林、毛泽东、邓小平的生平和传记"
-    },
-    "A8": {
-      "A81": {
-        "sortVal": "马克思主义的学习和研究"
-      },
-      "A811": {
-        "sortVal": "马克思、恩格斯著作的学习和研究"
-      },
-      "A813": {
-				"sortVal": "书目、索引"
-      },
-			"A82": {
-        "sortVal": "列宁主义的学习和研究"
-      },
-			"A821": {
-        "sortVal": "列宁著作的学习和研究"
-      },
-      "A823": {
-				"sortVal": "书目、索引"
-      },
-			"A83": {
-        "sortVal": "斯大林的思想的学习和研究"
-      },
-      "A831": {
-				"sortVal": "斯大林著作的学习和勘察"
-      },
-      "A833": {
-        "sortVal": "书目、索引"
-      },
-      "A84": {
-        "sortVal": "毛泽东思想的学习和研究"
-      },
-      "A841": {
-        "sortVal": "毛泽东著作的学习和研究"
-      },
-      "A843": {
-        "sortVal": "书目、索引"
-      },
-      "A849": {
-        "sortVal": "邓小平理论的学习研究"
-      },
-      "A849.1": {
-				"sortVal": "邓小平著作的学习和研究"
-      },
-      "A849.3": {
-        "sortVal": "书目、索引"
-      },
-      "A85": {
-        "sortVal": "著作汇编的学习和研究"
-      },
-      "sortVal": "马克思、恩格斯、列宁、斯大林、毛泽东、邓小平理论的学习和研究"
-    },
-    "sortVal": "马列毛邓"
-  },
-  B: {
-    B1: {
-      B11: {
-				B111: {
-          "sortVal": "B111-value"
-        },
-        B112: {
-          "sortVal": "B112-value"
-        },
-        "sortVal": "B11-value"
-      },
-      B12: {
-        B121: {
-          "sortVal": "B121-value"
-        },
-        B122: {
-          "sortVal": "B122-value"
-        },
-        "sortVal": "B12-value"
-      },
-      B13: {
-        B131: {
-          "sortVal": "B131-value"
-        },
-        B132: {
-          "sortVal": "B132-value"
-        },
-        "sortVal": "B13-value"
-      },
-      "sortVal": "B1-value"
-    },
-    B2: {
-      "sortVal": "B2-value"
-    },
-    B3: {
-      "sortVal": "B3-value"
-    },
-    "sortVal": "B-value"
-  },
-  C: {
-
-    "sortVal": "C-value"
-  }
-};*/
-
 var clcStr = `
 A 马克思主义、列宁主义、毛泽东思想、邓小平理论
 A1　马克思、恩格斯著作
@@ -411,8 +167,8 @@ C913.3 生活与消费
 C913.4 文教卫生
 C913.5 青少年问题
 C913.6 老年人问题
-C913.68妇女问题
-C913.69残疾人问题
+C913.68 妇女问题
+C913.69 残疾人问题
 C913.7 社会福利、救济、社会保障
 C913.8 社会病态
 C913.9 其他社会问题
@@ -532,8 +288,8 @@ D669.7 社会福利
 D669.9 其他
 D67 地方政治概况
 D675.8 台湾政治概况
-D676.58香港政治概况
-D676.59澳门政治概况
+D676.58 香港政治概况
+D676.59 澳门政治概况
 D69 政治制度史
 D691 清及清以前政治
 D693 民国时代政治
@@ -564,8 +320,8 @@ D91 法学各部门
 D92 中国法律
 D920.0理论
 D920.1方针、政策及其阐述
-D920.5解释、案例
-D920.9法律汇编
+D920.5 解释、案例
+D920.9 法律汇编
 D921 国家法、宪法
 D921.1 国家机构组织法
 D921.2 选举法
@@ -631,7 +387,7 @@ E26 军事制度
 E27 各种武装力量(各军、兵种)
 E28 民兵
 E289 地方军事
-E289.58台湾军事
+E289.58 台湾军事
 E29 军事史(战史、建军史)
 E297 中国人民解放军军事史
 E297.1 北伐战争时期
@@ -682,7 +438,7 @@ F069.9 其他
 F09 经济思想史
 F091 世界
 F091.9 马克思列宁主义经济思想
-F091.93毛泽东、邓小平经济思想
+F091.93 毛泽东、邓小平经济思想
 F092 中国经济思想
 F1 世界各国经济概况、经济史、经济地理
 F11 世界经济、国际经济关系
@@ -927,7 +683,7 @@ G258 各类型图书馆
 G259 世界各国图书馆事业
 G26 博物馆学、博物馆事业
 G27 档案学、档案事业
-G3科学、科学研究
+G3 科学、科学研究
 G302 知识学
 G303 未来学
 G305 科学发明、发现研究(创造学)
@@ -2251,7 +2007,7 @@ TG7 刀具、磨料、磨具、夹具、模具和手工具
 TG8 公差与技术测量及机械量仪
 TG9 钳工工艺与装配工艺
 TH 机械仪表工业
-TH11机械学
+TH11 机械学
 TH12 机械设计、计算与制图
 TH13 机械零件及传动装置
 TH14 机械制造用材料
@@ -2753,8 +2509,8 @@ var clc = {
   "I": {},
   "J": {},
   "K": {},
-  "L": {},
-  "M": {},
+  //"L": {},
+  //"M": {},
   "N": {},
   "O": {},
   "P": {},
@@ -2764,9 +2520,9 @@ var clc = {
   "T": {},
   "U": {},
   "V": {},
-  "W": {},
+  //"W": {},
   "X": {},
-  "Y": {},
+  //"Y": {},
   "Z": {}
 };
 var reg = /^([A-Z]{1,2})([0-9]*)(\.|\-)?([0-9]*)$/;
@@ -2784,80 +2540,125 @@ var setSortVal = function(obj, prop, sortVal) {
 };
 
 arr.forEach(function(el, i) {
+  "use strict";
   el = el.trim();
 
   // pair ["A25", "手迹"]
-  var pair = el.split(/\s+/);
-  var sortCode = pair[0];
-  var sortVal = pair[1];
-  var match = sortCode.match(reg);
+  let pair = el.split(/\s+/);
+  let sortCode = pair[0];
+  let sortVal = pair[1];
+  let match = sortCode.match(reg);
 
   if (match === null) {
     return;
   }
 
-  var alpha = match[1];
-  var alphaNum1 = match[2];
-  var dot = match[3] || "";
-  var alphaNum2 = match[4];
-  var alpha1 = alpha[0];
+  let alpha = match[1];
+  let alphaNum1 = match[2];
+  let dot = match[3] || "";
+  let alphaNum2 = match[4];
+  let alpha1 = alpha[0];
 
-  var alphaMatch1 = function() {
+  let cA = alpha.length === 2 ? clc[alpha1][alpha] : clc[alpha];
+  let aN1 = alpha + alphaNum1[0];
+  let aN2 = alpha + alphaNum1[0] + alphaNum1[1];
+  let aN = alpha + alphaNum1;
+  let aNDot = aN + dot + alphaNum2;
+
+  let alphaMatch1 = function() {
     if (alphaNum1 === "" && alphaNum2 === "") {
       setSortVal(clc, alpha, sortVal);
       return;
     }
-    if (alphaNum1.length === 1 && dot === "" && !hasProp(clc[alpha], alpha + alphaNum1[0]) ||
+    if (alphaNum1.length === 1 && dot === "" && !hasProp(cA, aN1) ||
       alphaNum1 === "" && dot !== "" && alphaNum2.length === 1) {
-      setSortVal(clc[alpha], alpha + (alphaNum1[0] || "") + dot + alphaNum2, sortVal);
+      setSortVal(cA, alpha + (alphaNum1[0] || "") + dot + alphaNum2, sortVal);
       return;
     }
     if (alphaNum1 === "" && dot !== "" && alphaNum2.length >= 2) {
-      if (hasProp(clc[alpha], alpha + dot + alphaNum2[0])) {
-        setSortVal(clc[alpha][alpha + dot + alphaNum2[0]], alpha + dot + alphaNum2, sortVal);
+      if (hasProp(cA, alpha + dot + alphaNum2[0])) {
+        setSortVal(cA[alpha + dot + alphaNum2[0]], aNDot, sortVal);
       } else {
-        setSortVal(clc[alpha], alpha + dot + alphaNum2, sortVal);
+        setSortVal(cA, aNDot, sortVal);
       }
       return;
     }
 
     if (alphaNum1.length === 1) {
       if (alphaNum2.length === 0) {
-        setSortVal(clc[alpha], alpha + alphaNum1, sortVal);
+        setSortVal(cA, aN, sortVal);
       } else if (alphaNum2.length === 1) {
-        setSortVal(clc[alpha][alpha + alphaNum1], alpha + alphaNum1 + dot + alphaNum2, sortVal);
+        setSortVal(cA[aN], aNDot, sortVal);
       } else if (alphaNum2.length >= 2) {
-        if (hasProp(clc[alpha][alpha + alphaNum1], alpha + alphaNum1 + dot + alphaNum2[0])) {
-          setSortVal(clc[alpha][alpha + alphaNum1][alpha + alphaNum1 + dot + alphaNum2[0]],
-            alpha + alphaNum1 + dot + alphaNum2, sortVal);
+        if (hasProp(cA[aN], aNDot[0])) {
+          setSortVal(cA[aN][aNDot[0]], aNDot, sortVal);
         } else {
-          setSortVal(clc[alpha][alpha + alphaNum1], alpha + alphaNum1 + dot + alphaNum2, sortVal);
+          setSortVal(cA[aN], aNDot, sortVal);
         }
       }
     } else if (alphaNum1.length === 2) {
       if (alphaNum2 === "") {
-        if (hasProp(clc[alpha], alpha + alphaNum1[0])) {
-          setSortVal(clc[alpha][alpha + alphaNum1[0]], alpha + alphaNum1, sortVal);
+        if (hasProp(cA, aN1)) {
+          setSortVal(cA[aN1], aN, sortVal);
         } else {
-          setSortVal(clc[alpha], alpha + alphaNum1, sortVal);
+          setSortVal(cA, aN, sortVal);
         }
       } else if (alphaNum2.length >= 1) {
-        if (!hasProp(clc[alpha][alpha + alphaNum1[0]], alpha + alphaNum1)) {
+        if (!hasProp(cA[aN1], aN)) {
           return;
         }
-        if (hasProp(clc[alpha][alpha + alphaNum1[0]][alpha + alphaNum1], alpha + alphaNum1 + dot + alphaNum2[0])) {
-          setSortVal(clc[alpha][alpha + alphaNum1[0]][alpha + alphaNum1][alpha + alphaNum1 + dot + alphaNum2[0]],
-            alpha + alphaNum1 + dot + alphaNum2, sortVal);
+        if (hasProp(cA[aN1][aN], aNDot[0])) {
+          setSortVal(cA[aN1][aN][aNDot[0]], aNDot, sortVal);
         } else {
-          setSortVal(clc[alpha][alpha + alphaNum1[0]][alpha + alphaNum1],
-            alpha + alphaNum1 + dot + alphaNum2, sortVal);
+          setSortVal(cA[aN1][aN], aNDot, sortVal);
         }
       }
     } else if (alphaNum1.length === 3) {
-
+      if (alphaNum2 === "") {
+        if (hasProp(cA, aN2)) {
+          setSortVal(cA[aN2], aN, sortVal);
+        } else if (hasProp(cA, aN1) && hasProp(cA[aN1], aN2)) {
+          setSortVal(cA[aN1][aN2], aN, sortVal);
+        } else if (hasProp(cA, aN1) && !hasProp(cA[aN1], aN2)) {
+          setSortVal(cA[aN1], aN, sortVal);
+        } else if (!hasProp(cA, aN1) && !hasProp(cA[aN1], aN2)) {
+          setSortVal(cA, aN, sortVal);
+        }
+      } else if (alphaNum2.length === 1) {
+        if (hasProp(cA, aN2)) {
+          if (hasProp(cA[aN2], aN)) {
+            setSortVal(cA[aN2][aN], aNDot, sortVal);
+          } else {
+            setSortVal(cA[aN2], aNDot, sortVal);
+          }
+        } else if (hasProp(cA[aN1], aN2) && !hasProp(cA[aN1][aN2], aN)) {
+          setSortVal(cA[aN1][aN2], aNDot, sortVal);
+        } else if (hasProp(cA, aN1) && hasProp(cA[aN1], aN2) && hasProp(cA[aN1][aN2], aN)) {
+          setSortVal(cA[aN1][aN2][aN], aNDot, sortVal);
+        }
+      } else if (alphaNum2.length >= 2) {
+        if (hasProp(cA, aN2) && hasProp(cA[aN2], aN) && hasProp(cA[aN2][aN], aN + dot + alphaNum2[0])) {
+          setSortVal(cA[aN2][aN][aN + dot + alphaNum2[0]], aN + dot + alphaNum2, sortVal);
+        } else if (hasProp(cA, aN1) && hasProp(cA[aN1], aN2)) {
+          if (hasProp(cA[aN1][aN2], aN)) {
+            if (hasProp(cA[aN1][aN2][aN], aN + dot + alphaNum2[0])) {
+              setSortVal(cA[aN1][aN2][aN][aN + dot + alphaNum2[0]], aNDot, sortVal);
+            } else {
+              setSortVal(cA[aN1][aN2][aN], aNDot, sortVal);
+            }
+          } else if (!hasProp(cA[aN1][aN2], aN)) {
+            if (hasProp(cA[aN1][aN2], aN + dot + alphaNum2[0])) {
+              setSortVal(cA[aN1][aN2][aN + dot + alphaNum2[0]], aNDot, sortVal);
+            } else {
+              setSortVal(cA[aN1][aN2], aNDot, sortVal);
+            }
+          }
+        }
+      }
     }
   };
-  var alphaMatch2 = function() {
+
+  let alphaMatch2 = function() {
     if (!hasProp(clc, alpha1)) {
       return;
     }
@@ -2867,64 +2668,53 @@ arr.forEach(function(el, i) {
     }
     if (alphaNum1 === "") {
       if (alphaNum2.length === 1) {
-        setSortVal(clc[alpha1][alpha], alpha + dot + alphaNum2, sortVal);
+        setSortVal(cA, alpha + dot + alphaNum2, sortVal);
       } else if (alphaNum2.length >= 2) {
-        setSortVal(clc[alpha1][alpha][alpha + dot + alphaNum2[0]], alpha + dot + alphaNum2, sortVal);
+        setSortVal(cA[alpha + dot + alphaNum2[0]], alpha + dot + alphaNum2, sortVal);
       }
     } else if (alphaNum1.length === 1) {
       if (alphaNum2 === "") {
-        setSortVal(clc[alpha1][alpha], alpha + alphaNum1, sortVal);
+        setSortVal(cA, aN, sortVal);
       } else if (alphaNum2.length >= 1) {
-        setSortVal(clc[alpha1][alpha], alpha + alphaNum1 + dot + alphaNum2, sortVal);
+        setSortVal(cA, aNDot, sortVal);
       }
     } else if (alphaNum1.length === 2) {
       if (alphaNum2 === "") {
-        if (hasProp(clc[alpha1][alpha], alpha + alphaNum1[0])) {
-          setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0]], alpha + alphaNum1, sortVal);
+        if (hasProp(cA, aN1)) {
+          setSortVal(cA[aN1], aN, sortVal);
         } else {
-          setSortVal(clc[alpha1][alpha], alpha + alphaNum1, sortVal);
+          setSortVal(cA, aN, sortVal);
         }
       } else if (alphaNum2.length >= 1) {
-        setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0]][alpha + alphaNum1], alpha + alphaNum1 + dot + alphaNum2, sortVal);
+        setSortVal(cA[aN1][aN], aNDot, sortVal);
       }
     } else if (alphaNum1.length === 3) {
       // particular case
       // ["TN929.5", "移动通信"]
       if (alphaNum1 === "929" && alphaNum2 === "5") {
-        setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0] + alphaNum1[1]],
-          alpha + alphaNum1 + dot + alphaNum2, sortVal);
+        setSortVal(cA[aN2], aNDot, sortVal);
         return;
       } else if (alphaNum1 === "664" && alphaNum2 === "64") {
         // ["TS664-64", "家具图谱"]
-        setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0]], alpha + alphaNum1 + dot + alphaNum2, sortVal);
+        setSortVal(cA[aN1], aNDot, sortVal);
         return;
       }
 
       if (alphaNum2 === "") {
-        if (hasProp(clc[alpha1][alpha], alpha + alphaNum1[0] + alphaNum1[1])) {
-          setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0] + alphaNum1[1]],
-            alpha + alphaNum1, sortVal);
-        } else if (hasProp(clc[alpha1][alpha], alpha + alphaNum1[0]) &&
-          hasProp(clc[alpha1][alpha][alpha + alphaNum1[0]], alpha + alphaNum1[0] + alphaNum1[1])) {
-          setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0]][alpha + alphaNum1[0] + alphaNum1[1]],
-            alpha + alphaNum1, sortVal);
-        } else if (hasProp(clc[alpha1][alpha], alpha + alphaNum1[0]) &&
-          !hasProp(clc[alpha1][alpha][alpha + alphaNum1[0]], alpha + alphaNum1[0] + alphaNum1[1])) {
-          setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0]], alpha + alphaNum1, sortVal);
-        } else if (!hasProp(clc[alpha1][alpha], alpha + alphaNum1[0]) &&
-          !hasProp(clc[alpha1][alpha][alpha + alphaNum1[0]], alpha + alphaNum1[0] + alphaNum1[1])) {
-          setSortVal(clc[alpha1][alpha], alpha + alphaNum1, sortVal);
+        if (hasProp(cA, aN2)) {
+          setSortVal(cA[aN2], aN, sortVal);
+        } else if (hasProp(cA, aN1) && hasProp(cA[aN1], aN2)) {
+          setSortVal(cA[aN1][aN2], aN, sortVal);
+        } else if (hasProp(cA, aN1) && !hasProp(cA[aN1], aN2)) {
+          setSortVal(cA[aN1], aN, sortVal);
+        } else if (!hasProp(cA, aN1) && !hasProp(cA[aN1], aN2)) {
+          setSortVal(cA, aN, sortVal);
         }
       } else if (alphaNum2.length >= 1) {
-        if (hasProp(clc[alpha1][alpha], alpha + alphaNum1[0] + alphaNum1[1]) &&
-          hasProp(clc[alpha1][alpha][alpha + alphaNum1[0] + alphaNum1[1]], alpha + alphaNum1)) {
-          setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0] + alphaNum1[1]][alpha + alphaNum1],
-            alpha + alphaNum1 + dot + alphaNum2, sortVal);
-        } else if (hasProp(clc[alpha1][alpha], alpha + alphaNum1[0]) &&
-          hasProp(clc[alpha1][alpha][alpha + alphaNum1[0]], alpha + alphaNum1[0] + alphaNum1[1]) &&
-          hasProp(clc[alpha1][alpha][alpha + alphaNum1[0]][alpha + alphaNum1[0] + alphaNum1[1]], alpha + alphaNum1)) {
-          setSortVal(clc[alpha1][alpha][alpha + alphaNum1[0]][alpha + alphaNum1[0] + alphaNum1[1]][alpha + alphaNum1],
-            alpha + alphaNum1 + dot + alphaNum2, sortVal);
+        if (hasProp(cA, aN2) && hasProp(cA[aN2], aN)) {
+          setSortVal(cA[aN2][aN], aNDot, sortVal);
+        } else if (hasProp(cA, aN1) && hasProp(cA[aN1], aN2) && hasProp(cA[aN1][aN2], aN)) {
+          setSortVal(cA[aN1][aN2][aN], aNDot, sortVal);
         }
       }
     }
