@@ -46,8 +46,4 @@ app.App = React.createClass({
     }
 });
 
-app.start = function () {
-  React.render(<app.App clc={clc} />, document.getElementById("app"));
-};
-
-module.exports = window.app = app;
+React.render(<app.App clc={clc} />, document.getElementById("mount-point"));

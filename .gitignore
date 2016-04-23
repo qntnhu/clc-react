@@ -1,4 +1,10 @@
-lib-cov
+.DS_Store
+build
+Desktop.ini
+node_modules
+
+_icons.sass
+
 *.seed
 *.log
 *.csv
@@ -7,22 +13,31 @@ lib-cov
 *.pid
 *.gz
 *.iml
-*.php
+*.TMP
 *.bat
 *.ini
+*.db
+*.mp4
+*.ogv
+*.webm
+*.cab
+*.msi
+*.msm
+*.msp
+*.lnk
 *.zip
 *.7z
 *.rar
+*.tar
 *.swp
 
-test
-tests
+lib-cov
+$RECYCLE.BIN/
 pids
 logs
 results
 npm-debug.log
 node_modules/
-Thumbs.db
 .DS_Store
 .nodemonignore
 .sass-cache/
@@ -36,6 +51,5 @@ Thumbs.db
 
 # build
 .build
-# dist/css
-# dist/js
-build/
+dist
+build
