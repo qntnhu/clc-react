@@ -1,11 +1,11 @@
-var React = require("react");
-var ClcRow;
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-ClcRow = React.createClass({
+const ClcRow = React.createClass({
   handleItemClick: function() {
-    var sortCode = React.findDOMNode(this.refs.sortCode).innerHTML;
-    var sortArr = this.props.sort(this.props.clc, this.props.level + 1, 0, sortCode);
-    if (sortArr.length === 0 ) {
+    const sortCode = ReactDOM.findDOMNode(this.refs.sortCode).innerHTML;
+    const sortArr = this.props.sort(this.props.clc, this.props.level + 1, 0, sortCode);
+    if (sortArr.length === 0) {
       return;
     }
     this.props.handleItemClick(sortCode);

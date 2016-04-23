@@ -1,12 +1,13 @@
-var React = require("react");
-var Manipulate;
+import React from 'react';
 
-Manipulate = React.createClass({
+const Manipulate = React.createClass({
   render: function() {
-    return <div className="manipulate">
-      <a href="#">&lt;</a>
-      <a href="#">&gt;</a>
-    </div>;
+    return (
+      <div className="manipulate">
+        <a href="#">&lt;</a>
+        <a href="#">&gt;</a>
+      </div>
+    );
   }
 });
 

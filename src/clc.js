@@ -1,6 +1,6 @@
-var clcStr = `
+const clcStr = `
 A 马克思主义、列宁主义、毛泽东思想、邓小平理论
-A1　马克思、恩格斯著作
+A1 马克思、恩格斯著作
 A11 选集、文集
 A12 单行著作
 A13 书信集、日记、函电、谈话
@@ -8,7 +8,7 @@ A14 诗词
 A15 手迹
 A16 专题汇编
 A18 语录
-A2　列宁著作
+A2 列宁著作
 A21 选集、文集
 A22 单行著作
 A23 书信集、日记、函电、谈话
@@ -16,7 +16,7 @@ A24 诗词
 A25 手迹
 A26 专题汇编
 A28 语录
-A3　斯大林著作
+A3 斯大林著作
 A31 选集、文集
 A32 单行著作
 A33 书信集、日记、函电、谈话
@@ -24,7 +24,7 @@ A34 诗词
 A35 手迹
 A36 专题汇编
 A38 语录
-A4　毛泽东著作
+A4 毛泽东著作
 A41 选集、文集
 A42 单行著作
 A43 书信集、日记、函电、谈话
@@ -40,15 +40,15 @@ A494 诗词
 A495 手迹
 A496 专题汇编
 A498 语录
-A5　马克思、恩格斯、列宁、斯大林、毛泽东、邓小平著作汇编
-A7　马克思、恩格斯、列宁、斯大林、毛泽东、邓小平的生平和传记
+A5 马克思、恩格斯、列宁、斯大林、毛泽东、邓小平著作汇编
+A7 马克思、恩格斯、列宁、斯大林、毛泽东、邓小平的生平和传记
 A71 马克思
 A72 恩格斯
 A73 列宁
 A74 斯大林
 A75 毛泽东
 A76 邓小平
-A8　马克思主义、列宁主义、毛泽东思想、邓小平理论的学习和研究
+A8 马克思主义、列宁主义、毛泽东思想、邓小平理论的学习和研究
 A81 马克思主义的学习和研究
 A811 马克思、恩格斯著作的学习和研究
 A813 书目、索引
@@ -66,14 +66,14 @@ A849.1 邓小平著作的学习和研究
 A849.3 书目、索引
 A85 著作汇编的学习和研究
 B 哲学
-B0　哲学理论
+B0 哲学理论
 B00 马克思主义哲学
 B01 哲学基本问题
 B02 辩证唯物主义
 B03 历史唯物主义
 B08 哲学流派及其研究
-B1　世界哲学
-B2　中国哲学
+B1 世界哲学
+B2 中国哲学
 B20 唯物主义和唯心主义(总论)
 B21 古代哲学
 B22 先秦哲学(公元前221年)
@@ -82,14 +82,14 @@ B24 隋、唐、宋、元、明、清哲学(589年～1840年)
 B25 近代哲学(1840年～1916年)
 B26 现代哲学(1919年～ )
 B27 马克思主义哲学在中国的传播与发展
-B3　亚洲哲学
-B4　非洲哲学
-B5　欧洲哲学
-B6　大洋洲哲学
-B7　美洲哲学
-B80　思维科学(总论)
-B81　逻辑学
-B82　伦理学
+B3 亚洲哲学
+B4 非洲哲学
+B5 欧洲哲学
+B6 大洋洲哲学
+B7 美洲哲学
+B80 思维科学(总论)
+B81 逻辑学
+B82 伦理学
 B821 人生观、人生哲学
 B822 国家道德
 B822.9 职业道德(工作道德)
@@ -97,8 +97,8 @@ B823 家庭、婚姻道德
 B824 社会公德
 B825 个人修养
 B829 其他伦理规范
-B83　美学
-B84　心理学
+B83 美学
+B84 心理学
 B841 心理研究方法
 B842 心理过程与心理状态
 B843 发生心理学
@@ -116,7 +116,7 @@ B848.5 智力、智慧
 B848.6 性格
 B848.8 个别差异
 B849 应用心理学
-B9　无神论、宗教
+B9 无神论、宗教
 B91 对宗教的分析和研究
 B92 宗教理论与概况
 B94 佛教
@@ -126,25 +126,25 @@ B97 基督教
 B98 其他宗教
 B99 迷信术教
 C 社会科学总论
-C0　社会科学理论与方法论
+C0 社会科学理论与方法论
 C01 科学研究的方针、政策
 C02 科学的哲学思想
 C03 科学的方法论
 C04 术语规范及交流
 C06 学派与学说
 C09 社会科学史
-C1　社会科学现状、概况
-C2　机关、团体、会议
-C3　社会科学研究方法
-C4　社会科学教育与普及
+C1 社会科学现状、概况
+C2 机关、团体、会议
+C3 社会科学研究方法
+C4 社会科学教育与普及
 C49 社会科学普及读物
-C5　社会科学丛书、文集、连续性出版物
+C5 社会科学丛书、文集、连续性出版物
 C51 丛书(汇刻书)、文库
 C52 全集、选集
 C53 文集、会议录
 C54 年鉴、年刊
 C55 连续出版物
-C6　社会科学参考工具书
+C6 社会科学参考工具书
 C61 名词术语、辞典、百科全书(类书)
 C62 手册、指南、一览表、年表
 C7 社会科学文献检索工具书
@@ -201,7 +201,7 @@ C976.1 劳动社会学
 C976.7 劳动计量学
 C979 社会保障学
 D 政治、法律
-D0　政治理论
+D0 政治理论
 D00 科学社会主义理论(总论)
 D01 阶级、阶级斗争理论
 D02 革命理论
@@ -237,7 +237,7 @@ D34 非洲各国共产党
 D35 欧洲各国共产党
 D36 大洋洲各国共产党
 D37 美洲各国共产党
-D4　工人、农民、青年、妇女运动与组织
+D4 工人、农民、青年、妇女运动与组织
 D41 工人运动与组织
 D42 农民运动与组织
 D43 青年、学生运动与组织
@@ -304,7 +304,7 @@ D756.5 法国政治
 D76 大洋洲各国政治
 D77 美洲各国政治
 D771.2 美国政治
-D8　外交、国际关系
+D8 外交、国际关系
 D80 外交、国际关系理论
 D81 国际关系
 D82 中国外交
@@ -313,7 +313,7 @@ D84 非洲外交
 D85 欧洲外交
 D86 大洋洲外交
 D87 美洲外交
-D9　法律
+D9 法律
 D9-49 法律普及读物
 D90 法的理论(法学)
 D91 法学各部门
@@ -367,8 +367,8 @@ D995 战时国际法(战争法)
 D996 国际经济法
 D997 国际私法
 E 军事
-E0　军事理论
-E1　世界军事
+E0 军事理论
+E1 世界军事
 E1-49 世界军事普及读物
 E12 军事制度
 E13 军事教育与训练
@@ -376,7 +376,7 @@ E14 军事后方勤务
 E15 各种武装力量(各军、兵种)
 E16 军事组织与活动
 E19 军事史
-E2　中国军事
+E2 中国军事
 E20 建军理论
 E21 司令部工作
 E22 政治工作
@@ -401,7 +401,7 @@ E4 非洲军事
 E5 欧洲军事
 E6 大洋洲军事
 E7 美洲军事
-E8　战略、战役、战术
+E8 战略、战役、战术
 E81 战略学
 E82 战役学
 E83 战术学
@@ -409,12 +409,12 @@ E86 非常规战争
 E87 军事情报
 E89 古代兵法、战法
 E892 中国
-E9　军事技术
+E9 军事技术
 E91 军事技术基础科学
 E92 武器、军用器材
 E95 军事工程
 E96 军事通信
-E99　军事地形学、军事地理学
+E99 军事地形学、军事地理学
 F 经济
 F0 经济学(政治经济学)
 F0-0 马克思主义政治经济学
@@ -654,8 +654,8 @@ F841 世界保险业
 F842 中国保险业
 F842.7 地方保险
 G 文化、科学、教育、体育
-G0　文化理论
-G1　世界各国文化事业概况
+G0 文化理论
+G1 世界各国文化事业概况
 G11 世界
 G112 专题文化研究
 G114 文化产业、文化市场
@@ -871,7 +871,7 @@ G898.1 活动性游戏
 G898.2 智力游戏
 G899 其他文体活动
 H 语言、文字
-H0　语言学
+H0 语言学
 H01 语音学
 H019 朗诵法、演讲术
 H02 文字学
@@ -883,7 +883,7 @@ H05 写作学、修辞学
 H059 翻译学
 H06 词典学
 H061 词典
-H1　汉语
+H1 汉语
 H102 汉语的规范化、标准化、推广普通话
 H109.2 古代汉语
 H109.4 现代汉语
@@ -917,8 +917,8 @@ H194.1 古代汉语读物
 H194.3 现代汉语读物
 H194.4 初级学校读物
 H194.5 中级学校读物
-H2　中国少数民族语言
-H3　常用外国语
+H2 中国少数民族语言
+H3 常用外国语
 H31 英语
 H310.1 非标准英语
 H310.4 英语水平考试
@@ -941,8 +941,8 @@ H34 西班牙语
 H35 俄语
 H36 日语
 H37 阿拉伯语
-H4　汉藏语系
-H5　阿尔泰语系(突厥—蒙古—通古斯语系)
+H4 汉藏语系
+H5 阿尔泰语系(突厥—蒙古—通古斯语系)
 H61 南亚语系
 H62 南印语系(达罗毗茶语系、德拉维达语系)
 H63 南岛语系
@@ -950,21 +950,21 @@ H64 东北亚诸语系
 H65 伊比利亚—高加索语系
 H66 芬兰—乌戈尔语系
 H67 闪—含语系(阿非罗-亚细亚语系)
-H7　印欧语系
+H7 印欧语系
 H81 非洲诸语系
 H83 美洲诸语系
 H84 大洋州诸语系
 H9 国际辅助语
 H91 世界语
 I 文学
-I0　文学理论
+I0 文学理论
 I01 文艺美学
 I02 文学理论的基本问题
 I03 文艺工作者
 I04 文学创作论
 I05 各体文学理论和创作方法
 I06 文学评论、文学欣赏
-I1　世界文学
+I1 世界文学
 I1-61 文学词典
 I106 各体文学评论与研究
 I109 文学史、文学思想史
@@ -976,7 +976,7 @@ I15 报告文学集
 I16 散文集
 I17 民间文学集
 I18 儿童文学
-I2　中国文学
+I2 中国文学
 I2-49 中国文学普及读物
 I2-61 中国文学词典
 I2-62 中国文学手册、指南
@@ -1128,17 +1128,17 @@ I777 巴西文学
 I775 哥伦比亚文学
 I783 阿根廷文学
 J 艺术
-J0　艺术理论
+J0 艺术理论
 J01 艺术美学
 J02 艺术理论的基本问题
 J03 艺术工作者
 J04 艺术创作方法和经验
 J05 艺术评论欣赏
-J1　世界各国艺术概况
+J1 世界各国艺术概况
 J11 世界艺术
 J12 中国艺术
 J120.9 中国艺术史
-J2　绘画
+J2 绘画
 J2-61 美术辞典
 J20 绘画理论
 J201 绘画美学
@@ -1189,17 +1189,17 @@ J292.21 碑贴丛刻
 J292.3 书法作品：按书体分
 J292.4 篆刻、治印及作品
 J293 外文书法
-J3　雕塑
+J3 雕塑
 J305 雕塑评论、欣赏
 J31 雕塑技法
 J32 中国雕塑
 J33 各国雕塑
-J4　摄影艺术
+J4 摄影艺术
 J40 摄影艺术理论
 J41 摄影技术
 J42 中国摄影艺术
 J43 各国摄影艺术
-J5　工艺美术
+J5 工艺美术
 J51 图案学
 J52 中国工艺美术
 J522 图案集
@@ -1210,7 +1210,7 @@ J526 金属工艺美术
 J527 陶瓷、漆器
 J528 民间工艺美术
 J59 建筑艺术
-J6　音乐
+J6 音乐
 J6-61 音乐词典
 J60 音乐理论
 J61 音乐技术理论与方法
@@ -1238,7 +1238,7 @@ J647 器乐曲
 J648 民族器乐曲
 J65 世界各国音乐作品
 J652 歌曲
-J7　舞蹈
+J7 舞蹈
 J70 舞蹈理论
 J71 舞蹈技术、方法
 J72 中国舞蹈、舞剧
@@ -1251,7 +1251,7 @@ J722.5 芭蕾舞蹈
 J722.8 交际舞
 J73 各国舞蹈、舞剧
 J79 舞蹈事业
-J8　戏剧艺术
+J8 戏剧艺术
 J82 中国戏剧
 J821 京剧艺术
 J83 各国戏剧艺术
@@ -2496,86 +2496,85 @@ Z87 期刊目录、报纸目录
 Z88 专科目录
 Z89 文摘、索引`;
 
-var arr = clcStr.split("\n");
-var clc = {
-  "A": {},
-  "B": {},
-  "C": {},
-  "D": {},
-  "E": {},
-  "F": {},
-  "G": {},
-  "H": {},
-  "I": {},
-  "J": {},
-  "K": {},
-  //"L": {},
-  //"M": {},
-  "N": {},
-  "O": {},
-  "P": {},
-  "Q": {},
-  "R": {},
-  "S": {},
-  "T": {},
-  "U": {},
-  "V": {},
-  //"W": {},
-  "X": {},
-  //"Y": {},
-  "Z": {}
+const arr = clcStr.split('\n');
+const clc = {
+  'A': {},
+  'B': {},
+  'C': {},
+  'D': {},
+  'E': {},
+  'F': {},
+  'G': {},
+  'H': {},
+  'I': {},
+  'J': {},
+  'K': {},
+  // 'L': {},
+  // 'M': {},
+  'N': {},
+  'O': {},
+  'P': {},
+  'Q': {},
+  'R': {},
+  'S': {},
+  'T': {},
+  'U': {},
+  'V': {},
+  // 'W': {},
+  'X': {},
+  // 'Y': {},
+  'Z': {}
 };
-var reg = /^([A-Z]{1,2})([0-9]*)(\.|\-)?([0-9]*)$/;
-var log = console.log.bind(console);
-var hasProp = function(obj, prop) {
+const reg = /^([A-Z]{1,2})([0-9]*)(\.|\-)?([0-9]*)$/;
+const log = console.log.bind(console);
+const hasProp = function(obj, prop) {
   try {
     return Object.prototype.hasOwnProperty.call(obj, prop);
   } catch (e) {
     return false;
   }
 };
-var setSortVal = function(obj, prop, sortVal) {
+const setSortVal = function(obj, prop, sortVal) {
   obj[prop] = obj[prop] || {};
   obj[prop].sortVal = sortVal;
 };
 
-arr.forEach(function(el, i) {
-  "use strict";
+arr.forEach((el) => {
   el = el.trim();
 
-  // pair ["A25", "手迹"]
-  let pair = el.split(/\s+/);
-  let sortCode = pair[0];
-  let sortVal = pair[1];
-  let match = sortCode.match(reg);
+  // pair ['A25', '手迹']
+  const pair = el.split(/\s+/);
+  const sortCode = pair[0];
+  const sortVal = pair[1];
+  const match = sortCode.match(reg);
 
   if (match === null) {
     return;
   }
 
-  let alpha = match[1];
-  let alphaNum1 = match[2];
-  let dot = match[3] || "";
-  let alphaNum2 = match[4];
-  let alpha1 = alpha[0];
+  const alpha = match[1];
+  const alphaNum1 = match[2];
+  const dot = match[3] || '';
+  const alphaNum2 = match[4];
+  const alpha1 = alpha[0];
 
-  let cA = alpha.length === 2 ? clc[alpha1][alpha] : clc[alpha];
-  let aN1 = alpha + alphaNum1[0];
-  let aN2 = alpha + alphaNum1[0] + alphaNum1[1];
-  let aN = alpha + alphaNum1;
-  let aNDot = aN + dot + alphaNum2;
+  const cA = alpha.length === 2 ? clc[alpha1][alpha] : clc[alpha];
+  const aN1 = alpha + alphaNum1[0];
+  const aN2 = alpha + alphaNum1[0] + alphaNum1[1];
+  const aN = alpha + alphaNum1;
+  const aNDot = aN + dot + alphaNum2;
 
-  let alphaMatch1 = function() {
-    if (alphaNum1 === "" && alphaNum2 === "") {
+  const alphaMatch1 = function() {
+    if (alphaNum1 === '' && alphaNum2 === '') {
       setSortVal(clc, alpha, sortVal);
       return;
     }
-    if (alphaNum1.length === 1 && dot === "" && !hasProp(cA, aN1) ||
-      alphaNum1 === "" && dot !== "" && alphaNum2.length === 1) {
-      setSortVal(cA, alpha + (alphaNum1[0] || "") + dot + alphaNum2, sortVal);
+    if (alphaNum1.length === 1 && dot === '' && !hasProp(cA, aN1) ||
+      alphaNum1 === '' && dot !== '' && alphaNum2.length === 1) {
+      setSortVal(cA, alpha + (alphaNum1[0] || '') + dot + alphaNum2, sortVal);
       return;
     }
-    if (alphaNum1 === "" && dot !== "" && alphaNum2.length >= 2) {
+    if (alphaNum1 === '' && dot !== '' && alphaNum2.length >= 2) {
       if (hasProp(cA, alpha + dot + alphaNum2[0])) {
         setSortVal(cA[alpha + dot + alphaNum2[0]], aNDot, sortVal);
       } else {
@@ -2597,7 +2596,7 @@ arr.forEach(function(el, i) {
         }
       }
     } else if (alphaNum1.length === 2) {
-      if (alphaNum2 === "") {
+      if (alphaNum2 === '') {
         if (hasProp(cA, aN1)) {
           setSortVal(cA[aN1], aN, sortVal);
         } else {
@@ -2614,7 +2613,7 @@ arr.forEach(function(el, i) {
         }
       }
     } else if (alphaNum1.length === 3) {
-      if (alphaNum2 === "") {
+      if (alphaNum2 === '') {
         if (hasProp(cA, aN2)) {
           setSortVal(cA[aN2], aN, sortVal);
         } else if (hasProp(cA, aN1) && hasProp(cA[aN1], aN2)) {
@@ -2658,7 +2657,7 @@ arr.forEach(function(el, i) {
     }
   };
 
-  let alphaMatch2 = function() {
+  const alphaMatch2 = function() {
     if (!hasProp(clc, alpha1)) {
       return;
     }
@@ -2666,20 +2665,20 @@ arr.forEach(function(el, i) {
       setSortVal(clc[alpha1], alpha, sortVal);
       return;
     }
-    if (alphaNum1 === "") {
+    if (alphaNum1 === '') {
       if (alphaNum2.length === 1) {
         setSortVal(cA, alpha + dot + alphaNum2, sortVal);
       } else if (alphaNum2.length >= 2) {
         setSortVal(cA[alpha + dot + alphaNum2[0]], alpha + dot + alphaNum2, sortVal);
       }
     } else if (alphaNum1.length === 1) {
-      if (alphaNum2 === "") {
+      if (alphaNum2 === '') {
         setSortVal(cA, aN, sortVal);
       } else if (alphaNum2.length >= 1) {
         setSortVal(cA, aNDot, sortVal);
       }
     } else if (alphaNum1.length === 2) {
-      if (alphaNum2 === "") {
+      if (alphaNum2 === '') {
         if (hasProp(cA, aN1)) {
           setSortVal(cA[aN1], aN, sortVal);
         } else {
@@ -2690,17 +2689,17 @@ arr.forEach(function(el, i) {
       }
     } else if (alphaNum1.length === 3) {
       // particular case
-      // ["TN929.5", "移动通信"]
-      if (alphaNum1 === "929" && alphaNum2 === "5") {
+      // ['TN929.5', '移动通信']
+      if (alphaNum1 === '929' && alphaNum2 === '5') {
         setSortVal(cA[aN2], aNDot, sortVal);
         return;
-      } else if (alphaNum1 === "664" && alphaNum2 === "64") {
-        // ["TS664-64", "家具图谱"]
+      } else if (alphaNum1 === '664' && alphaNum2 === '64') {
+        // ['TS664-64', '家具图谱']
         setSortVal(cA[aN1], aNDot, sortVal);
         return;
       }
 
-      if (alphaNum2 === "") {
+      if (alphaNum2 === '') {
         if (hasProp(cA, aN2)) {
           setSortVal(cA[aN2], aN, sortVal);
         } else if (hasProp(cA, aN1) && hasProp(cA[aN1], aN2)) {
