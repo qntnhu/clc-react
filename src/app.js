@@ -3,6 +3,7 @@ var clc = require("./clc");
 var ClcList = require("./clcList");
 var Manipulate = require("./manipulate");
 var app = app || {};
+require('./css/main.css');
 
 app.App = React.createClass({
     getRouterObj: function() {

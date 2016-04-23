@@ -1,5 +1,5 @@
 body { margin: 0; padding: 0; background-color: rgba(253, 220, 154, 0.52); padding: 0 10px; box-sizing: border-box; }
-#app { max-width: 700px; padding-top: 20px; margin: 0 auto; }
+#mount-point { max-width: 700px; padding-top: 20px; margin: 0 auto; }
 .clc-wrapper { background-color: rgba(255,255,255,0.7); border-radius: 4px; padding: 10px 0; box-shadow: 0px 1px 2px rgba(0,0,0,0.2); }
 .clc-wrapper ul { list-style-type: none; padding: 0 32px; }
 .clc-wrapper li {
@@ -25,7 +25,7 @@ body { margin: 0; padding: 0; background-color: rgba(253, 220, 154, 0.52); paddi
 .manipulate a { display: block; width: 40px; height: 40px; font-size: 30px; }
 
 @media (max-width: 500px) {
-  #app { padding-top: 10px; }
+  #mount-point { padding-top: 10px; }
   .clc-wrapper ul { margin: 0; padding: 0 15px; }
   .clc-wrapper li span { font-size: 13px; }
 }
