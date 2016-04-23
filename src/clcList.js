@@ -1,19 +1,19 @@
 import React from 'react';
-const utils = require('./utils');
-const ClcRow = require('./clcRow');
+import _ from 'lodash';
+import ClcRow from './clcRow';
 
 const ClcList = React.createClass({
   sort: function() {
     const sortArr = [];
     (function sort(obj, level, currentLevel, sortCode) {
       currentLevel = currentLevel || 0;
-      utils.eachProp(obj, (val, prop) => {
-        if (utils.isObject(val)) {
+      _.map(obj, (val, prop) => {
+        if (_.isObject(val)) {
           if (level === 0) {
             sortArr.push([prop, val.sortVal]);
           } else if ((level === 1 || (level - 1) === currentLevel) && prop === sortCode) {
-            utils.eachProp(val, (val, prop) => {
-              if (utils.isObject(val)) {
+            _.map(val, (val, prop) => {
+              if (_.isObject(val)) {
                 sortArr.push([prop, val.sortVal]);
               }
             });

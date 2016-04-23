@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-const clc = require('./clc');
-const ClcList = require('./clcList');
-const Manipulate = require('./manipulate');
+import clc from './clc';
+import ClcList from './clcList';
+import Manipulate from './manipulate';
 const app = app || {};
 require('./css/main.css');
 
