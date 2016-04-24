@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import clc from './clc';
 import ClcList from './components/ClcList';
-import Manipulate from './components/Manipulate';
 require('./css/main.css');
 
 class App extends React.Component {
@@ -58,7 +57,6 @@ class App extends React.Component {
           sortCode={this.state.sortCode}
           clc={this.props.clc}
         />
-        <Manipulate />
       </div>
     );
   }

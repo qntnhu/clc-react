@@ -2516,7 +2516,7 @@
 (function() {
   "use strict";
 
-  var arr = document.querySelector("#clc").innerHTML.split("\n");
+  var lines = document.querySelector("#clc").innerHTML.split("\n");
   var clc = {
     "A": {},
     "B": {},
@@ -2559,11 +2559,11 @@
     obj[prop].sortVal = sortVal;
   };
 
-  arr.forEach(function(el, i) {
-    el = el.trim();
+  lines.forEach(function(line) {
+    line = line.trim();
 
     // pair ["A25", "手迹"]
-    let pair = el.split(/\s+/);
+    let pair = line.split(/\s+/);
     let sortCode = pair[0];
     let sortVal = pair[1];
     let match = sortCode.match(reg);

@@ -17,6 +17,9 @@ app.use([
 ]);
 app.use('/public', express.static('public'));
 
+app.get('/clc(.html)?', (req, res) => {
+  res.sendFile(path.join(__dirname, 'clc.html'));
+});
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });

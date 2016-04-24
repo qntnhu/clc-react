@@ -21,9 +21,6 @@ body { margin: 0; padding: 0; background-color: rgba(253, 220, 154, 0.52); paddi
 .clc-wrapper li span:first-child { width: 15%; text-align: left; }
 .clc-wrapper li span:last-child { text-overflow: ellipsis; overflow: hidden; white-space: nowrap; width: 85%; text-align: right; }
 
-.manipulate { display: none; }
-.manipulate a { display: block; width: 40px; height: 40px; font-size: 30px; }
-
 @media (max-width: 500px) {
   #mount-point { padding-top: 10px; }
   .clc-wrapper ul { margin: 0; padding: 0 15px; }

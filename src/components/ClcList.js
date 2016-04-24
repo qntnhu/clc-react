@@ -9,6 +9,7 @@ class ClcList extends React.Component {
     clc: PropTypes.object.isRequired,
     handleItemClick: PropTypes.func.isRequired
   }
+
   sort(...args) {
     const sortArr = [];
     function sort(obj, level, currentLevel, sortCode) {
@@ -30,7 +31,6 @@ class ClcList extends React.Component {
         }
       });
     }
-
     sort(...args);
     return sortArr;
   }
@@ -48,11 +48,10 @@ class ClcList extends React.Component {
           level={level}
           sortCode={subArr[0]}
           sortVal={subArr[1]}
-          key={'' + subArr[0] + subArr[1]}
+          key={subArr[0] + subArr[1]}
         />
       );
     });
-
     return (
       <ul>
         {rows}

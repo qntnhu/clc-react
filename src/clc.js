@@ -2496,7 +2496,7 @@ Z87 期刊目录、报纸目录
 Z88 专科目录
 Z89 文摘、索引`;
 
-const arr = clcStr.split('\n');
+const lines = clcStr.split('\n');
 const clc = {
   'A': {},
   'B': {},
@@ -2526,7 +2526,6 @@ const clc = {
   'Z': {}
 };
 const reg = /^([A-Z]{1,2})([0-9]*)(\.|\-)?([0-9]*)$/;
-const log = console.log.bind(console);
 const hasProp = function(obj, prop) {
   try {
     return Object.prototype.hasOwnProperty.call(obj, prop);
@@ -2539,11 +2538,11 @@ const setSortVal = function(obj, prop, sortVal) {
   obj[prop].sortVal = sortVal;
 };
 
-arr.forEach((el) => {
-  el = el.trim();
+lines.forEach((line) => {
+  line = line.trim();
 
   // pair ['A25', '手迹']
-  const pair = el.split(/\s+/);
+  const pair = line.split(/\s+/);
   const sortCode = pair[0];
   const sortVal = pair[1];
   const match = sortCode.match(reg);
@@ -2721,13 +2720,15 @@ arr.forEach((el) => {
 
   if (match !== null) {
     if (alpha.length === 1) {
+      // one alphabet at the head
       alphaMatch1();
     } else if (alpha.length === 2) {
+      // two alphabet at the head
       alphaMatch2();
     }
   }
 });
 
-log(clc);
+console.log(clc);
 
 module.exports = clc;

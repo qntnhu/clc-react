@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import ReactDOM from 'react-dom';
 
 class ClcRow extends React.Component {
   static propTypes = {
@@ -16,18 +15,18 @@ class ClcRow extends React.Component {
     this.handleItemClick = this.handleItemClick.bind(this);
   }
 
-  handleItemClick() {
-    const sortCode = ReactDOM.findDOMNode(this.refs.sortCode).innerHTML;
+  handleItemClick(e) {
+    const sortCode = e.target.closest('[data-sort-code]').dataset.sortCode;
     const sortArr = this.props.sort(this.props.clc, this.props.level + 1, 0, sortCode);
-    if (sortArr.length === 0) {
-      return;
+    if (sortArr.length !== 0) {
+      this.props.handleItemClick(sortCode);
     }
-    this.props.handleItemClick(sortCode);
   }
+
   render() {
     return (
-      <li onClick={this.handleItemClick}>
-        <span ref="sortCode" className="sort-code">{this.props.sortCode}</span>
+      <li onClick={this.handleItemClick} data-sort-code={this.props.sortCode}>
+        <span className="sort-code">{this.props.sortCode}</span>
         <span>{this.props.sortVal}</span>
       </li>
     );
