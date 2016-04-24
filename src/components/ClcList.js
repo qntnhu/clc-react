@@ -1,6 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
-import ClcRow from './clcRow';
+import ClcRow from './ClcRow';
 
 class ClcList extends React.Component {
   sort() {
@@ -40,6 +40,7 @@ class ClcList extends React.Component {
           level={level}
           sortCode={subArr[0]}
           sortVal={subArr[1]}
+          key={'' + subArr[0] + subArr[1]}
         />
       );
     }.bind(this));

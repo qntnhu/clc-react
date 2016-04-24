@@ -1,10 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import clc from './clc';
-import ClcList from './clcList';
+import ClcList from './components/ClcList';
+import Manipulate from './components/Manipulate';
 require('./css/main.css');
 
 class App extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    const route = window.location.hash.substr(1);
+    const routePartials = route.replace(/^\//, '').split('/');
+    const level = +routePartials[0] || 0;
+    const sortCode = routePartials[1] || '';
+    this.state = {
+      level: level,
+      sortCode: sortCode
+    };
+  }
+  componentDidMount() {
+    window.addEventListener('hashchange', () => {
+      this.setState(this.getRouterObj());
+    });
+  }
+
   getRouterObj() {
     const route = window.location.hash.substr(1);
     const routePartials = route.replace(/^\//, '').split('/');
@@ -14,15 +34,6 @@ class App extends React.Component {
       level: level,
       sortCode: sortCode
     };
-  }
-  getInitialState() {
-    const routerObj = this.getRouterObj();
-    return routerObj;
-  }
-  componentDidMount() {
-    window.addEventListener('hashchange', function() {
-      this.setState(this.getRouterObj());
-    }.bind(this));
   }
   handleItemClick(sortCode) {
     const level = this.state.level;
@@ -38,14 +49,12 @@ class App extends React.Component {
     return (
       <div className="clc-wrapper">
         <ClcList
-          handleItemClick={this.handleItemClick}
+          handleItemClick={this.handleItemClick.bind(this)}
           level={this.state.level}
           sortCode={this.state.sortCode}
           clc={this.props.clc}
         />
-          {/*
-           <Manipulate />
-          */}
+        <Manipulate />
       </div>
     );
   }

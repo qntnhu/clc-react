@@ -12,7 +12,7 @@ class ClcRow extends React.Component {
   }
   render() {
     return (
-      <li onClick={this.handleItemClick}>
+      <li onClick={this.handleItemClick.bind(this)}>
         <span ref="sortCode" className="sort-code">{this.props.sortCode}</span>
         <span>{this.props.sortVal}</span>
       </li>
