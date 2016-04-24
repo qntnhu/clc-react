@@ -2,8 +2,8 @@ import React from 'react';
 import _ from 'lodash';
 import ClcRow from './clcRow';
 
-const ClcList = React.createClass({
-  sort: function() {
+class ClcList extends React.Component {
+  sort() {
     const sortArr = [];
     (function sort(obj, level, currentLevel, sortCode) {
       currentLevel = currentLevel || 0;
@@ -25,8 +25,9 @@ const ClcList = React.createClass({
       });
     }).apply({}, arguments);
     return sortArr;
-  },
-  render: function() {
+  }
+
+  render() {
     const clc = this.props.clc;
     const level = this.props.level;
     const rows = [];
@@ -49,6 +50,6 @@ const ClcList = React.createClass({
       </ul>
     );
   }
-});
+}
 
 module.exports = ClcList;

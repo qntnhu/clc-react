@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const ClcRow = React.createClass({
-  handleItemClick: function() {
+class ClcRow extends React.Component {
+  handleItemClick() {
     const sortCode = ReactDOM.findDOMNode(this.refs.sortCode).innerHTML;
     const sortArr = this.props.sort(this.props.clc, this.props.level + 1, 0, sortCode);
     if (sortArr.length === 0) {
       return;
     }
     this.props.handleItemClick(sortCode);
-  },
-  render: function() {
+  }
+  render() {
     return (
       <li onClick={this.handleItemClick}>
         <span ref="sortCode" className="sort-code">{this.props.sortCode}</span>
@@ -18,6 +18,6 @@ const ClcRow = React.createClass({
       </li>
     );
   }
-});
+}
 
 module.exports = ClcRow;

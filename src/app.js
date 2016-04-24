@@ -2,12 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import clc from './clc';
 import ClcList from './clcList';
-import Manipulate from './manipulate';
-const app = app || {};
 require('./css/main.css');
 
-app.App = React.createClass({
-  getRouterObj: function() {
+class App extends React.Component {
+  getRouterObj() {
     const route = window.location.hash.substr(1);
     const routePartials = route.replace(/^\//, '').split('/');
     const level = +routePartials[0] || 0;
@@ -16,17 +14,17 @@ app.App = React.createClass({
       level: level,
       sortCode: sortCode
     };
-  },
-  getInitialState: function() {
+  }
+  getInitialState() {
     const routerObj = this.getRouterObj();
     return routerObj;
-  },
-  componentDidMount: function() {
+  }
+  componentDidMount() {
     window.addEventListener('hashchange', function() {
       this.setState(this.getRouterObj());
     }.bind(this));
-  },
-  handleItemClick: function(sortCode) {
+  }
+  handleItemClick(sortCode) {
     const level = this.state.level;
     window.location.hash = '#/' + (level + 1) + '/' + sortCode;
 
@@ -35,8 +33,8 @@ app.App = React.createClass({
       level: level + 1,
       sortCode: sortCode
     });
-  },
-  render: function() {
+  }
+  render() {
     return (
       <div className="clc-wrapper">
         <ClcList
@@ -51,6 +49,6 @@ app.App = React.createClass({
       </div>
     );
   }
-});
+}
 
-ReactDOM.render(<app.App clc={clc} />, document.getElementById('mount-point'));
+ReactDOM.render(<App clc={clc} />, document.getElementById('mount-point'));
