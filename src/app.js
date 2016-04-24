@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import clc from './clc';
 import ClcList from './components/ClcList';
@@ -6,7 +6,9 @@ import Manipulate from './components/Manipulate';
 require('./css/main.css');
 
 class App extends React.Component {
-
+  static propTypes = {
+    clc: PropTypes.object.isRequired
+  }
   constructor(props) {
     super(props);
 
@@ -18,6 +20,8 @@ class App extends React.Component {
       level: level,
       sortCode: sortCode
     };
+
+    this.handleItemClick = this.handleItemClick.bind(this);
   }
   componentDidMount() {
     window.addEventListener('hashchange', () => {
@@ -49,7 +53,7 @@ class App extends React.Component {
     return (
       <div className="clc-wrapper">
         <ClcList
-          handleItemClick={this.handleItemClick.bind(this)}
+          handleItemClick={this.handleItemClick}
           level={this.state.level}
           sortCode={this.state.sortCode}
           clc={this.props.clc}

@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import _ from 'lodash';
 import ClcRow from './ClcRow';
 
 class ClcList extends React.Component {
-  sort() {
+  static propTypes = {
+    level: PropTypes.number.isRequired,
+    sortCode: PropTypes.string.isRequired,
+    clc: PropTypes.object.isRequired,
+    handleItemClick: PropTypes.func.isRequired
+  }
+  sort(...args) {
     const sortArr = [];
-    (function sort(obj, level, currentLevel, sortCode) {
+    function sort(obj, level, currentLevel, sortCode) {
       currentLevel = currentLevel || 0;
       _.map(obj, (val, prop) => {
         if (_.isObject(val)) {
@@ -23,7 +29,9 @@ class ClcList extends React.Component {
           }
         }
       });
-    }).apply({}, arguments);
+    }
+
+    sort(...args);
     return sortArr;
   }
 
@@ -31,7 +39,7 @@ class ClcList extends React.Component {
     const clc = this.props.clc;
     const level = this.props.level;
     const rows = [];
-    this.sort(clc, level, 0, this.props.sortCode).forEach(function(subArr, i) {
+    this.sort(clc, level, 0, this.props.sortCode).forEach((subArr) => {
       rows.push(
         <ClcRow
           clc={clc}
@@ -43,7 +51,7 @@ class ClcList extends React.Component {
           key={'' + subArr[0] + subArr[1]}
         />
       );
-    }.bind(this));
+    });
 
     return (
       <ul>
