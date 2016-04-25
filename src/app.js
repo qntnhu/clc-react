@@ -78,13 +78,15 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="clc-wrapper">
-        <ClcList
-          handleItemClick={this.handleItemClick}
-          level={this.state.level}
-          sortCode={this.state.sortCode}
-          clc={this.props.clc}
-        />
+      <div className="clc-wrp">
+        <div className="clc-container">
+          <ClcList
+            handleItemClick={this.handleItemClick}
+            level={this.state.level}
+            sortCode={this.state.sortCode}
+            clc={this.props.clc}
+          />
+        </div>
       </div>
     );
   }
