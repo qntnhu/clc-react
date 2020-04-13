@@ -12,7 +12,6 @@ module.exports = {
     publicPath: '/static/'
   },
   plugins: [
-    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.DefinePlugin({
       __DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'true')),
     }),
@@ -29,7 +28,7 @@ module.exports = {
       loader: 'babel-loader',
       include: path.join(__dirname, 'src'),
       query: {
-        plugins: ['transform-decorators-legacy']
+        // plugins: ['transform-decorators-legacy']
       }
     }, {
       test: /\.css$/,

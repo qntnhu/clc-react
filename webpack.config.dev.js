@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
+  mode: 'development',
   devtool: 'eval',
   entry: [
     'webpack-hot-middleware/client',
@@ -17,20 +18,33 @@ module.exports = {
       __DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'true')),
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    // new webpack.LoaderOptionsPlugin({
+    //   options: {
+    //     process: {
+    //       traceDeprecation: true
+    //     }
+    //   }
+    // })
   ],
   module: {
-    loaders: [{
-      test: /\.js$/,
-      exclude: /(node_modules|bower_components)/,
-      loader: 'babel-loader',
-      include: path.join(__dirname, 'src'),
-      query: {
-        plugins: ['transform-decorators-legacy']
+    rules: [
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /(node_modules|bower_components)/,
+        include: path.join(__dirname, 'src')
+      },
+      {
+        test: /\.css$/i,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader'
+          }
+        ]
       }
-    }, {
-      test: /\.css$/,
-      loader: 'style-loader!css-loader'
-    }]
+    ]
   }
 };

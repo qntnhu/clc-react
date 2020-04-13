@@ -1,8 +1,9 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import clc from './clc';
 import ClcList from './components/ClcList';
-require('./css/main.css');
+import './css/main.css';
 
 class App extends React.Component {
   static defaultProps = {
@@ -45,8 +46,8 @@ class App extends React.Component {
     });
   }
   pathToState() {
-    const url: URL = new URL(window.location.href);
-    const path: string = url.pathname;
+    const url = new URL(window.location.href);
+    const path = url.pathname;
     if (path === '/') {
       this.changePath();
     } else {
@@ -61,7 +62,7 @@ class App extends React.Component {
   }
   changePath() {
     if (this.state.shouldUpdatePath) {
-      const newPath: string = '/' +
+      const newPath = '/' +
         this.state.level + '/' +
         this.state.sortCode;
       window.history.pushState(this.state, 'history path', newPath);

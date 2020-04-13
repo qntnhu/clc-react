@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 class ClcRow extends React.Component {
   static propTypes = {
@@ -33,4 +34,4 @@ class ClcRow extends React.Component {
   }
 }
 
-module.exports = ClcRow;
+export default ClcRow;
