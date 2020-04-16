@@ -1,3 +1,4 @@
+import { hot } from 'react-hot-loader/root';
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
@@ -93,4 +94,8 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App clc={clc} />, document.getElementById('mount-point'));
+
+// ReactDOM.render(<App clc={clc} />, document.getElementById('mount-point'));
+
+const HotApp = hot(() => <App clc={clc} />);
+ReactDOM.render(<HotApp />, document.getElementById('mount-point'));
