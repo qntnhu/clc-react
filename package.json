@@ -39,7 +39,7 @@
     "react-transform-hmr": "^1.0.4",
     "style-loader": "^1",
     "webpack": "^4",
-    "webpack-cli": "^3.3.11",
+    "webpack-cli": "^3.3.12",
     "webpack-dev-middleware": "^3",
     "webpack-hot-middleware": "^2.9.1"
   }
